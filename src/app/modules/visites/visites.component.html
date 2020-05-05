@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 ">
+      <div class="card">
+        <div class="card-body">
+
+          <mat-icon style="color: orange;">schedule</mat-icon>
+          <span style="color: #1a69bc">Ajouter Visite</span>
+          <hr>
+
+          <form>
+
+            <div class="form-group">
+              <label>Motif  </label>
+              <input type="text" class="form-control" placeholder="Motif">
+            </div>
+            <div class="form-group">
+              <label>Date  </label>
+              <input mdc-datetime-picker="" date="true" time="true" type="text" id="datetimeedit"
+                     placeholder="YYYY-MM-DD HH:MM" show-todays-date="" minutes="true" short-time="true"
+                     min-date="minDate" max-date="maxDateNow" edit-input="true" show-icon="true" ng-model="dateTimeEdit"
+                     name="datetimeedit" class="form-control dtp-no-msclear dtp-input md-input">
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">Enregistrer</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
