@@ -2,27 +2,24 @@
   <div class="row">
     <div class="col-6 ">
       <div class="card">
-        <div class="card-body">
+        <div class="card-body"  >
 
           <mat-icon style="color: orange;">schedule</mat-icon>
           <span style="color: #1a69bc">Affecter un rendez-vous</span>
           <hr>
 
-          <form>
+          <form >
             <div class="form-group">
               <label>Nom  </label>
-              <input type="text" class="form-control" placeholder="Nom">
+              <input type="text" class="form-control"  #firstname="ngModel"  name="firstname" ngModel placeholder="Nom">
             </div>
             <div class="form-group">
               <label>Prénom  </label>
-              <input type="text" class="form-control" placeholder="Prénom">
+              <input type="text" class="form-control"  #lastname="ngModel"  name="lastname" ngModel placeholder="Prénom">
             </div>
             <div class="form-group">
               <label>Date  </label>
-              <input mdc-datetime-picker="" date="true" time="true" type="text" id="datetimeedit"
-                     placeholder="YYYY-MM-DD HH:MM" show-todays-date="" minutes="true" short-time="true"
-                     min-date="minDate" max-date="maxDateNow" edit-input="true" show-icon="true" ng-model="dateTimeEdit"
-                     name="datetimeedit" class="form-control dtp-no-msclear dtp-input md-input">
+              <input  type="text" #date="ngModel"  name="date" ngModel placeholder="JJ/MM/AAAA">
             </div>
             <div class="text-center">
               <button type="submit" class="btn btn-primary">Enregistrer</button>
@@ -43,7 +40,7 @@
           <hr>
 
           <div class="row justify-content-end">
-                <form>
+                <form #f="ngForm" (ngSubmit)="onGetAppoint(f.value)" >
                   <div class="row no-gutters">
                     <div class="col">
                       <input class="form-control form-control-borderless" type="search" placeholder="Rechercher...">
@@ -58,28 +55,19 @@
           <br>
           <table class="table table-striped border">
             <thead>
-            <tr>
+            <tr >
               <th>Nom</th>
               <th>Prénom</th>
               <th>Date</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <td>John</td>
-              <td>Doe</td>
-              <td>12-04-25 15:15</td>
+            <tr *ngFor="let me of met._embedded.appointments">
+              <td>{{me.firstname}}</td>
+              <td>{{me.lastname}}</td>
+              <td>{{me.date}}</td>
             </tr>
-            <tr>
-              <td>Mary</td>
-              <td>Moe</td>
-              <td>12-04-25 15:15</td>
-            </tr>
-            <tr>
-              <td>July</td>
-              <td>Dooley</td>
-              <td>12-04-25 15:15</td>
-            </tr>
+
             </tbody>
           </table>
         </div>

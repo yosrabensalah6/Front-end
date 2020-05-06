@@ -17,6 +17,7 @@ import { BilansComponent } from './modules/bilans/bilans.component';
 import { DocumentsComponent } from './modules/documents/documents.component';
 import { ConfereComponent } from './modules/confere/confere.component';
 import { HopitalComponent } from './modules/hopital/hopital.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { HopitalComponent } from './modules/hopital/hopital.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     DefaultModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
