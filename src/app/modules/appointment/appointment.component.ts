@@ -15,6 +15,8 @@ export class AppointmentComponent implements OnInit {
   private pages: Array<number>;
   private met;
   private currentPage: number;
+  private currentMet: AppointmentModel;
+  private mode: number=1;
 
   constructor(private metiersService:MetiersService,private router:Router) { }
 
@@ -32,8 +34,15 @@ export class AppointmentComponent implements OnInit {
         console.log(err);
       })
   }
-  onsaveRDV(value:any) {
-  console.log(value);
+
+  onSaveRDV(data: any) {
+    this.metiersService.saveResources(this.metiersService.host+"/appointments",data)
+      .subscribe(res=>{
+        this.currentMet=res;
+        this.mode=2;
+      },err=>{
+        console.log(err)
+      })
   }
 
 }

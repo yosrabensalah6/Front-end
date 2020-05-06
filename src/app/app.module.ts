@@ -18,6 +18,7 @@ import { DocumentsComponent } from './modules/documents/documents.component';
 import { ConfereComponent } from './modules/confere/confere.component';
 import { HopitalComponent } from './modules/hopital/hopital.component';
 import {FormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {FormsModule} from "@angular/forms";
     BrowserAnimationsModule,
     DefaultModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

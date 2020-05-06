@@ -8,7 +8,7 @@
           <span style="color: #1a69bc">Affecter un rendez-vous</span>
           <hr>
 
-          <form >
+          <form #f="ngForm" (ngSubmit)="onSaveRDV(f.value)" >
             <div class="form-group">
               <label>Nom  </label>
               <input type="text" class="form-control"  #firstname="ngModel"  name="firstname" ngModel placeholder="Nom">
@@ -40,7 +40,7 @@
           <hr>
 
           <div class="row justify-content-end">
-                <form #f="ngForm" (ngSubmit)="onGetAppoint(f.value)" >
+                <form  >
                   <div class="row no-gutters">
                     <div class="col">
                       <input class="form-control form-control-borderless" type="search" placeholder="Rechercher...">
@@ -62,7 +62,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let me of met._embedded.appointments">
+            <tr *ngFor="let me of metiersService._embedded.appointments">
               <td>{{me.firstname}}</td>
               <td>{{me.lastname}}</td>
               <td>{{me.date}}</td>

@@ -12,6 +12,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { CardComponent } from './widgets/card/card.component';
 import { PieComponent } from './widgets/pie/pie.component';
 import {FormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {FormsModule} from "@angular/forms";
     MatListModule,
     RouterModule,
     HighchartsChartModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   exports: [
     HeaderComponent,
