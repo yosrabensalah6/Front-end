@@ -26,7 +26,7 @@ export class AppointmentComponent implements OnInit {
   }
 
 getRDV(){
-this.RDVService.getRessouces("/appointments/search/byDate")
+this.RDVService.getRessouces("/appointments/search/byDate/")
   .subscribe(data=>{
     this.RDV=data;
 
