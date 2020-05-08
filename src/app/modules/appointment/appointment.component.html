@@ -19,7 +19,7 @@
             </div>
             <div class="form-group">
               <label>Date  </label>
-              <input  type="text" #date="ngModel"  name="date" ngModel placeholder="JJ/MM/AAAA">
+              <input  type="date" #date="ngModel"  name="date" ngModel placeholder="JJ/MM/AAAA">
             </div>
             <div class="text-center">
               <button type="submit" class="btn btn-primary">Enregistrer</button>
@@ -27,52 +27,72 @@
           </form>
 
         </div>
-      </div>
-    </div>
+        <div class="panel panel-body" *ngIf="mode==2" >
+          <p></p>
 
+          <div class="form-group" >
+            <label>Id : </label> <label>{{currentMet.id}}</label>
+            <p></p>
+            <label>Nom: </label><label>{{currentMet.firstname}}</label>
+            <p></p>
+            <label>Prenom: </label><label>{{currentMet.lastname}}</label>
+            <p></p>
+            <label>Date : </label><label>{{currentMet.date}}</label>
 
-    <div class="col-6 ">
-      <div class="card">
-        <div class="card-body">
-
-          <mat-icon style="color: orange;">today</mat-icon>
-          <span style="color: #1a69bc">Rechercher un rendez-vous</span>
-          <hr>
-
-          <div class="row justify-content-end">
-                <form  >
-                  <div class="row no-gutters">
-                    <div class="col">
-                      <input class="form-control form-control-borderless" type="search" placeholder="Rechercher...">
-                    </div>
-                    <div class="col-auto">
-                      <button class="btn btn-outline-primary" type="submit">Search</button>
-                    </div>
-              </div>
-            </form>
           </div>
-
-          <br>
-          <table class="table table-striped border">
-            <thead>
-            <tr >
-              <th>Nom</th>
-              <th>Prénom</th>
-              <th>Date</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let me of metiersService._embedded.appointments">
-              <td>{{me.firstname}}</td>
-              <td>{{me.lastname}}</td>
-              <td>{{me.date}}</td>
-            </tr>
-
-            </tbody>
-          </table>
         </div>
       </div>
     </div>
+
+
   </div>
+</div>
+<div class="container">
+<div class="row">
+
+  <div class="col-6 ">
+    <div class="card">
+      <div class="card-body">
+
+        <mat-icon style="color: orange;">today</mat-icon>
+        <span style="color: #1a69bc">Rechercher un rendez-vous</span>
+        <hr>
+
+        <div class="row justify-content-end">
+          <form #f="ngForm" (ngSubmit)="onChercher(f.value)" >
+            <div class="row no-gutters">
+              <div class="col">
+                <input class="form-control form-control-borderless" type="search" name="keyword" ngModel placeholder="Rechercher...">
+              </div>
+              <div class="col-auto">
+                <button class="btn btn-outline-primary" type="submit">Search</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <br>
+        <table *ngIf="RDV" class="table table-striped border">
+          <thead>
+          <tr >
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Date</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let m of RDV._embedded.appointments" >
+            <td>{{m.firstname}}</td>
+            <td>{{m.lastname}}</td>
+            <td>{{m.date}}</td>
+          </tr>
+
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 

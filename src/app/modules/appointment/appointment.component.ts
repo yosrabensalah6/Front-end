@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MetiersService} from "../services/metiers.service";
+import {RDVService} from "../services/RDV.service";
 import {Router} from "@angular/router";
 import {AppointmentModel} from "../modeles/Appointment.model";
 
@@ -10,35 +10,36 @@ import {AppointmentModel} from "../modeles/Appointment.model";
 })
 export class AppointmentComponent implements OnInit {
 
-  private size: number;
-  private totalPages: number;
-  private pages: Array<number>;
-  private met;
-  private currentPage: number;
-  private currentMet: AppointmentModel;
+
+
+
+  private currentRDV: AppointmentModel;
   private mode: number=1;
 
-  constructor(private metiersService:MetiersService,private router:Router) { }
+  private RDV;
+
+  constructor(private RDVService:RDVService, private router:Router) { }
 
   ngOnInit() {
-  }
-  onGetAppoint() {
-    this.metiersService.getMet(this.currentPage,this.size)
-      .subscribe(data=>
-      {
+    this.getRDV();
 
-        this.totalPages=data["page"].totalPages;
-        this.pages=new Array<number>(this.totalPages);
-        this.met=data;
-      },err=>{
-        console.log(err);
-      })
   }
+
+getRDV(){
+this.RDVService.getRessouces("/appointments/search/byDate")
+  .subscribe(data=>{
+    this.RDV=data;
+
+  },err =>{
+    console.log(err);
+  } )
+}
+
 
   onSaveRDV(data: any) {
-    this.metiersService.saveResources(this.metiersService.host+"/appointments",data)
+    this.RDVService.saveResources(this.RDVService.host+"/appointments",data)
       .subscribe(res=>{
-        this.currentMet=res;
+        this.currentRDV=res;
         this.mode=2;
       },err=>{
         console.log(err)
