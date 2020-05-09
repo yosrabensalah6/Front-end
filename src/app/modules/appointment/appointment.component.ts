@@ -15,30 +15,42 @@ export class AppointmentComponent implements OnInit {
 
   private currentRDV: AppointmentModel;
   private mode: number=1;
+  private listAppointments;
 
   private RDV;
 
   constructor(private RDVService:RDVService, private router:Router) { }
 
   ngOnInit() {
-    this.getRDV();
-
+    this.getAppointmentsCurrentDay();
   }
 
-getRDV(){
-this.RDVService.getRessouces("/appointments/search/byDate/")
-  .subscribe(data=>{
-    this.RDV=data;
+  getAppointmentsCurrentDay() {
+    this.RDVService.getRessouces('/appointments')
+      .subscribe(data => {
+        this.listAppointments = data;
 
-  },err =>{
-    console.log(err);
-  } )
-}
+      }, err => {
+        console.log(err);
+      });
+  }
+
+  onChercher(formdata: any) {
+    console.log(formdata);
+    this.RDVService.getRessouces('/appointments/search/byDate?date=' + formdata.date)
+      .subscribe(data => {
+        this.listAppointments = data;
+
+      }, err => {
+        console.log(err);
+      });
+  }
 
 
   onSaveRDV(data: any) {
     this.RDVService.saveResources(this.RDVService.host+"/appointments",data)
       .subscribe(res=>{
+
         this.currentRDV=res;
         this.mode=2;
       },err=>{

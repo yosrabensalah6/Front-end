@@ -19,7 +19,9 @@
             </div>
             <div class="form-group">
               <label>Date  </label>
-              <input  type="date" #date="ngModel"  name="date" ngModel placeholder="JJ/MM/AAAA">
+
+              <input  type="date" type="time" #date="ngModel" class="form-control" name="date" ngModel placeholder="JJ/MM/AAAA" >
+
             </div>
             <div class="text-center">
               <button type="submit" class="btn btn-primary">Enregistrer</button>
@@ -31,13 +33,13 @@
           <p></p>
 
           <div class="form-group" >
-            <label>Id : </label> <label>{{currentMet.id}}</label>
+            <label>Id : </label> <label>{{currentRDV.id}}</label>
             <p></p>
-            <label>Nom: </label><label>{{currentMet.firstname}}</label>
+            <label>Nom: </label><label>{{currentRDV.firstname}}</label>
             <p></p>
-            <label>Prenom: </label><label>{{currentMet.lastname}}</label>
+            <label>Prenom: </label><label>{{currentRDV.lastname}}</label>
             <p></p>
-            <label>Date : </label><label>{{currentMet.date}}</label>
+            <label>Date : </label><label>{{currentRDV.date}}</label>
 
           </div>
         </div>
@@ -45,10 +47,6 @@
     </div>
 
 
-  </div>
-</div>
-<div class="container">
-<div class="row">
 
   <div class="col-6 ">
     <div class="card">
@@ -59,10 +57,10 @@
         <hr>
 
         <div class="row justify-content-end">
-          <form #f="ngForm" (ngSubmit)="onChercher(f.value)" >
+          <form #fo="ngForm" (ngSubmit)="onChercher(f.value)" >
             <div class="row no-gutters">
               <div class="col">
-                <input class="form-control form-control-borderless" type="search" name="keyword" ngModel placeholder="Rechercher...">
+                <input class="form-control form-control-borderless" type="date" name="date" ngModel placeholder="Rechercher...">
               </div>
               <div class="col-auto">
                 <button class="btn btn-outline-primary" type="submit">Search</button>
@@ -72,7 +70,7 @@
         </div>
 
         <br>
-        <table *ngIf="RDV" class="table table-striped border">
+        <table class="table table-striped border">
           <thead>
           <tr >
             <th>Nom</th>
@@ -81,10 +79,10 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let m of RDV._embedded.appointments" >
-            <td>{{m.firstname}}</td>
-            <td>{{m.lastname}}</td>
-            <td>{{m.date}}</td>
+          <tr *ngFor="let appointment of listAppointments._embedded.appointments" >
+            <td>{{appointment.firstname}}</td>
+            <td>{{appointment.lastname}}</td>
+            <td>{{appointment.date}}</td>
           </tr>
 
           </tbody>
