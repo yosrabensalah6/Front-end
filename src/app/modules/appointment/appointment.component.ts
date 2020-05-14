@@ -17,7 +17,6 @@ export class AppointmentComponent implements OnInit {
   private mode: number=1;
   private listAppointments;
 
-  private RDV;
 
   constructor(private RDVService:RDVService, private router:Router) { }
 
@@ -34,28 +33,43 @@ export class AppointmentComponent implements OnInit {
         console.log(err);
       });
   }
-
-  onChercher(formdata: any) {
+  onChercher(formdata:any){
     console.log(formdata);
-    this.RDVService.getRessouces('/appointments/search/byDate?date=' + formdata.date)
-      .subscribe(data => {
-        this.listAppointments = data;
-
-      }, err => {
-        console.log(err);
-      });
+    this.RDVService.getRessouces('/appointments/search/byDate?date='+formdata.date)
+      .subscribe(
+        data =>{
+          this.listAppointments=data;
+        },err=>{
+          console.log(err);
+        }
+      )
   }
 
+  onSaveRDV(formdata: any) {
+   console.log('***********************',formdata);
+   let data={'firstname':formdata.firstname,'lastname':formdata.lastname,'date':formdata.date+" "+formdata.time};
+    console.log(data);
+   this.RDVService.saveResources(this.RDVService.host+'/appointments',data)
+     .subscribe(res=>{
+       this.currentRDV=res;
+       this.mode=2;
+       },err=>{
+       console.log(err);
+       }
 
-  onSaveRDV(data: any) {
-    this.RDVService.saveResources(this.RDVService.host+"/appointments",data)
-      .subscribe(res=>{
+     )
 
-        this.currentRDV=res;
-        this.mode=2;
-      },err=>{
-        console.log(err)
-      })
   }
 
+  onDeleteAppoint(appointment) {
+    let conf = confirm("etes vous sure ?");
+    if (conf) {
+      this.RDVService.DeleteResources(appointment._links.self.href)
+        .subscribe(data => {
+          this.onChercher(data);
+        }, err => {
+          console.log(err);
+        })
+    }
+  }
 }

@@ -3,12 +3,12 @@ export class Patient {
   public firstname:string;
   public lastname:string;
   public telephone:number;
-  public dateOfCreation :number;
-  public dateOfBirth:number;
+  public creationday : Date;
+  public birthday:Date;
   public sexe : string;
   public numMatCNAM:number;
   public typeCNAM:string;
-  public dateValCNAM:number;
+  public validationday:Date;
   public codeAPCI:number;
 
 }

@@ -43,7 +43,7 @@ const routes: Routes = [
     path: 'settings',
       component: SettingsComponent
     },{
-    path:'dossier',
+    path:'dossier/:url',
       component: DossierComponent
     },
     {

@@ -20,7 +20,13 @@
             <div class="form-group">
               <label>Date  </label>
 
-              <input  type="date" type="time" #date="ngModel" class="form-control" name="date" ngModel placeholder="JJ/MM/AAAA" >
+              <input  type="date"  #date="ngModel" class="form-control" name="date" ngModel placeholder="JJ/MM/AAAA" >
+
+            </div>
+            <div class="form-group">
+              <label>time  </label>
+
+              <input  type="time"  #date="ngModel" class="form-control" name="time" ngModel  >
 
             </div>
             <div class="text-center">
@@ -29,20 +35,20 @@
           </form>
 
         </div>
-        <div class="panel panel-body" *ngIf="mode==2" >
-          <p></p>
+    <div class="panel panel-body" *ngIf="mode==2" >
+          <p></p>-->
 
-          <div class="form-group" >
+         <div class="form-group" >-->
             <label>Id : </label> <label>{{currentRDV.id}}</label>
-            <p></p>
-            <label>Nom: </label><label>{{currentRDV.firstname}}</label>
-            <p></p>
+          <p></p>-->
+         <label>Nom: </label><label>{{currentRDV.firstname}}</label>
+            <p></p>-->
             <label>Prenom: </label><label>{{currentRDV.lastname}}</label>
-            <p></p>
-            <label>Date : </label><label>{{currentRDV.date}}</label>
+          <p></p>-->
+           <label>Date : </label><label>{{currentRDV.date}}</label>
 
-          </div>
-        </div>
+       </div>
+       </div>
       </div>
     </div>
 
@@ -57,7 +63,7 @@
         <hr>
 
         <div class="row justify-content-end">
-          <form #fo="ngForm" (ngSubmit)="onChercher(f.value)" >
+          <form #formdata="ngForm" (ngSubmit)="onChercher(formdata.value)" >
             <div class="row no-gutters">
               <div class="col">
                 <input class="form-control form-control-borderless" type="date" name="date" ngModel placeholder="Rechercher...">
@@ -76,6 +82,7 @@
             <th>Nom</th>
             <th>Prénom</th>
             <th>Date</th>
+            <th>Action</th>
           </tr>
           </thead>
           <tbody>
@@ -83,6 +90,8 @@
             <td>{{appointment.firstname}}</td>
             <td>{{appointment.lastname}}</td>
             <td>{{appointment.date}}</td>
+            <button   class=" btn btn-outline-danger" (click)="onDeleteAppoint(appointment)" > <mat-icon>delete_outline</mat-icon></button>
+
           </tr>
 
           </tbody>

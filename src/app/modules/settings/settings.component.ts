@@ -7,9 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
+  showFormAddHospital :Boolean = false;
+  showFormAddMedicament:Boolean = false;
+  showFormAddConfer :Boolean = false;
+
 
   ngOnInit() {
   }
+
+  showForm(value: any) {
+    if (value === 'Hospital') {
+      this.showFormAddHospital = true;
+    } else if (value === 'Medicament') {
+      this.showFormAddMedicament = true;
+    } else {
+      this.showFormAddConfer = true;
+    }
+  }
+
 
 }

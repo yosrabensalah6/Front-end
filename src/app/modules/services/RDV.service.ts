@@ -16,5 +16,8 @@ export class RDVService {
 public getRessouces(url){
     return this.httpClient.get(this.host+url)
 }
+  public DeleteResources(url) {
+    return this.httpClient.delete(url);
+  }
 
 }

@@ -1,11 +1,13 @@
 <div class="container">
   <div class="row">
+
     <div class="col-12 ">
       <div class="card">
-        <div class="card-body">
+        <div class="card-body"  >
+
 
           <mat-icon style="color: orange;">how_to_reg</mat-icon>
-          <span style="color: #1a69bc">Dossier n°1: Mr John Doe</span>
+          <span style="color: #1a69bc" >Dossier n° {{currentPatient.id}} : {{currentPatient.firstname}} {{currentPatient.lastname}}</span>
           <hr>
 
 
@@ -22,8 +24,19 @@
                     <th>Num Matricule CNAM</th>
                     <th>Type CNAM</th>
                     <th>Code APCI</th>
+                    <th>Date Validité CNAM</th>
                   </tr>
                   </thead>
+                  <tbody>
+                  <tr>
+                    <td>{{currentPatient.birthday}}</td>
+                    <td>{{currentPatient.numMatCNAM}}</td>
+                    <td>{{currentPatient.typeCNAM}}</td>
+                    <td>{{currentPatient.codeAPCI}}</td>
+                    <td>{{currentPatient.validationday}}</td>
+
+                  </tr>
+                  </tbody>
                 </table>
         </div>
       </div>
@@ -292,8 +305,10 @@
 
   </div>
 </div>
+
       </div>
     </div>
+
   </div>
 </div>
 

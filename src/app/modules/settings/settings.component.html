@@ -1,99 +1,165 @@
 <div class="container">
   <div class="row">
-    <div class="col-5 ">
+
+    <div class="col-6">
       <div class="card">
         <div class="card-body">
 
-          <mat-icon style="color: orange;">add_box</mat-icon>
-          <span style="color: #1a69bc">Ajouter Médicament</span>
+          <div class="card-head">
+            <div>
+              <mat-icon style="color: orange;">format_list_bulleted</mat-icon>
+              <span style="color: #1a69bc">Liste des cliniques / hôpitaux</span>
+            </div>
+            <div>
+              <button class="btn btn-sm btn-success" (click)="showForm('Hospital')">Ajouter</button>
+            </div>
+          </div>
+
           <hr>
+          <div style="margin-bottom: 15px" *ngIf="showFormAddHospital">
+            <form>
+              <div class="form-group">
+                <label>Nom Hopital </label>
+                <input type="text" class="form-control" placeholder="Nom Hopital">
+              </div>
 
-          <form>
-            <div class="form-group">
-              <label>Nom  </label>
-              <input type="text" class="form-control" placeholder="Nom">
-            </div>
-            <div class="form-group">
-              <label>Type </label>
-              <input type="text" class="form-control" placeholder="Type">
-            </div>
-            <div class="form-group">
-              <label>Description</label>
-              <input type="text" class="form-control" placeholder="Description" >
-            </div>
-            <div class="text-center">
-              <button type="submit" class="btn btn-primary">Enregistrer</button>
-            </div>
-          </form>
+              <div class="form-group">
+                <label>Adresse</label>
+                <input type="text" class="form-control" placeholder="Adresse">
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+              </div>
+            </form>
+          </div>
+          <table class="table table-striped border">
+            <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Prénom</th>
+              <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>hedi chaker</td>
+              <td>aaaaa</td>
+              <td>route ain</td>
+            </tr>
+            </tbody>
+          </table>
 
+        </div>
+      </div>
+      <br>
+      <div class="card">
+        <div class="card-body">
+          <div class="card-head">
+            <div>
+              <mat-icon style="color: orange;">format_list_bulleted</mat-icon>
+              <span style="color: #1a69bc">Listes des Médicament</span>
+            </div>
+            <div>
+              <button class="btn btn-sm btn-success" (click)="showForm('Medicament')">Ajouter</button>
+            </div>
+          </div>
+          <hr>
+          <div style="margin-bottom: 15px" *ngIf="showFormAddMedicament">
+            <form>
+              <div class="form-group">
+                <label>Nom </label>
+                <input type="text" class="form-control" placeholder="Nom">
+              </div>
+              <div class="form-group">
+                <label>Type </label>
+                <input type="text" class="form-control" placeholder="Type">
+              </div>
+              <div class="form-group">
+                <label>Description</label>
+                <textarea rows="5"  class="form-control" placeholder="Description"></textarea>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+              </div>
+            </form>
+          </div>
+          <table class="table table-striped border">
+            <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Prénom</th>
+              <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>hedi chaker</td>
+              <td>aaaaa</td>
+              <td>route ain</td>
+            </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
 
-    <div class="col-6 ">
+    <div class="col-6">
       <div class="card">
         <div class="card-body">
 
-          <mat-icon style="color: orange;">add_box</mat-icon>
-          <span style="color: #1a69bc">Ajouter Confère</span>
+          <div class="card-head">
+            <div>
+              <mat-icon style="color: orange;">format_list_bulleted</mat-icon>
+              <span style="color: #1a69bc">Listes des Confères</span>
+            </div>
+            <div>
+              <button class="btn btn-sm btn-success"  (click)="showForm('Confer')">Ajouter</button>
+            </div>
+          </div>
 
           <hr>
-
-          <form>
-            <div class="form-group">
-              <label>Nom  </label>
-              <input type="text" class="form-control" placeholder="Nom">
-            </div>
-            <div class="form-group">
-              <label>Prénom </label>
-              <input type="text" class="form-control" placeholder="Prénom">
-            </div>
-            <div class="form-group">
-              <label>Spécialité</label>
-              <input type="text" class="form-control" placeholder="Spécialité" >
-            </div>
-            <div class="form-group">
-              <label>Télephone</label>
-              <input type="text" class="form-control" placeholder="Téléphone" >
-            </div>
-            <div class="text-center">
-              <button type="submit" class="btn btn-primary">Enregistrer</button>
-            </div>
-          </form>
-
+          <div style="margin-bottom: 15px" *ngIf="showFormAddConfer">
+            <form>
+              <div class="form-group">
+                <label>Nom </label>
+                <input type="text" class="form-control" placeholder="Nom">
+              </div>
+              <div class="form-group">
+                <label>Prénom </label>
+                <input type="text" class="form-control" placeholder="Prénom">
+              </div>
+              <div class="form-group">
+                <label>Spécialité</label>
+                <input type="text" class="form-control" placeholder="Spécialité">
+              </div>
+              <div class="form-group">
+                <label>Télephone</label>
+                <input type="text" class="form-control" placeholder="Téléphone">
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+              </div>
+            </form>
+          </div>
+          <table class="table table-striped border">
+            <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Prénom</th>
+              <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>hedi chaker</td>
+              <td>aaaaa</td>
+              <td>route ain</td>
+            </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
-
-    <div class="col-5 ">
-      <div class="card">
-        <div class="card-body">
-
-          <mat-icon style="color: orange;">add_box</mat-icon>
-          <span style="color: #1a69bc">Ajouter Hopital</span>
-
-          <hr>
-
-          <form>
-            <div class="form-group">
-              <label>Nom Hopital </label>
-              <input type="text" class="form-control" placeholder="Nom Hopital">
-            </div>
-
-            <div class="form-group">
-              <label>Adresse</label>
-              <input type="text" class="form-control" placeholder="Adresse" >
-            </div>
-            <div class="text-center">
-              <button type="submit" class="btn btn-primary">Enregistrer</button>
-            </div>
-          </form>
-
-        </div>
-      </div>
-    </div>
-
-
   </div>
 </div>
 
