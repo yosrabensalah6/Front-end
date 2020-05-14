@@ -1,11 +1,21 @@
 <div class="container">
   <div class="row">
+
+      <div class="col-lg-12" >
+        <!-- breadcrumb-->
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+            <li class="breadcrumb-item"><a href="#">Rendez-vous</a></li>
+          </ol>
+        </nav>
+      </div>
     <div class="col-6 ">
       <div class="card">
         <div class="card-body"  >
 
           <mat-icon style="color: orange;">schedule</mat-icon>
-          <span style="color: #1a69bc">Affecter un rendez-vous</span>
+          <span style="color: #1a69bc;margin-left:10px">Affecter un rendez-vous</span>
           <hr>
 
           <form #f="ngForm" (ngSubmit)="onSaveRDV(f.value)" >
@@ -54,22 +64,25 @@
 
 
 
-  <div class="col-6 ">
+  <div class="col-6">
     <div class="card">
       <div class="card-body">
 
         <mat-icon style="color: orange;">today</mat-icon>
-        <span style="color: #1a69bc">Rechercher un rendez-vous</span>
+        <span style="color: #1a69bc; margin-left:10px">Rechercher un rendez-vous</span>
         <hr>
 
         <div class="row justify-content-end">
           <form #formdata="ngForm" (ngSubmit)="onChercher(formdata.value)" >
             <div class="row no-gutters">
               <div class="col">
-                <input class="form-control form-control-borderless" type="date" name="date" ngModel placeholder="Rechercher...">
+                <input class="form-control" type="date" name="date" ngModel style="border-top-right-radius: 0;border-bottom-right-radius: 0;">
               </div>
               <div class="col-auto">
-                <button class="btn btn-outline-primary" type="submit">Search</button>
+                <button class="btn btn-primary" type="submit"
+                        style="border-top-left-radius: 0;
+                            border-bottom-left-radius: 0; "
+                ><mat-icon >search</mat-icon></button>
               </div>
             </div>
           </form>
@@ -102,4 +115,5 @@
   </div>
 </div>
 </div>
+
 

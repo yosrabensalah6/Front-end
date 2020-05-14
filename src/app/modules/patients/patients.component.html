@@ -1,60 +1,90 @@
 <div class="container">
   <div class="row">
-    <div class="col-6 ">
+    <div class="col-lg-12" >
+      <!-- breadcrumb-->
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+          <li class="breadcrumb-item"><a href="#">Patients</a></li>
+        </ol>
+      </nav>
+    </div>
+    <div class="col-12">
       <div class="card">
         <div class="card-body">
 
           <mat-icon style="color: orange;">add</mat-icon>
-          <span style="color: #1a69bc">Ajouter Patient</span>
+          <span style="color: #1a69bc ; margin-left:10px">Ajouter Patient</span>
           <hr>
 
-          <form  #f="ngForm" (ngSubmit)="onSavePatient(f.value)">
-            <div class="form-group">
-              <label>Nom  </label>
-              <input type="text" class="form-control" placeholder="Nom" ngModel name="firstname" #firstname="ngModel">
-            </div>
-            <div class="form-group">
-              <label>Prénom  </label>
-              <input type="text" class="form-control" placeholder="Prénom" ngModel name="lastname" #lastname="ngModel">
-            </div>
-            <div class="form-group">
-              <label>Sexe </label>
-              <input type="text" class="form-control" placeholder="M/F" ngModel name="sexe" #sexe="ngModel">
-            </div>
-            <div class="form-group">
-              <label>Téléphone  </label>
-              <input type="text" class="form-control" placeholder="télephone" ngModel name="telephone" #telephone="ngModel">
-            </div>
-            <div class="form-group">
-              <label>Date Création </label>
-              <input type="date" class="form-control" ngModel name="creationday"  #creationday="ngModel" >
+          <form #f="ngForm" (ngSubmit)="onSavePatient(f.value)">
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label>Nom </label>
+                <input type="text" class="form-control" placeholder="Nom" ngModel name="firstname" #firstname="ngModel">
+              </div>
+              <div class="form-group col-md-6">
+                <label>Prénom </label>
+                <input type="text" class="form-control" placeholder="Prénom" ngModel name="lastname"
+                       #lastname="ngModel">
+              </div>
             </div>
 
-            <div class="form-group">
-              <label>Date Naissance</label>
-              <input type="date" class="form-control" ngModel name="birthday"  #birthday="ngModel" >
-            </div>
-            <div class="form-group">
-              <label>Type CNAM</label>
-              <input type="text" class="form-control" ngModel name="typeCNAM"  #typeCNAM="ngModel"  >
-            </div>
-
-            <div class="form-group">
-              <label>Numéro Matricule CNAM </label>
-              <input type="text" class="form-control" placeholder="Numéro Matricule CNAM" ngModel name="numMatCNAM" #numMAtCNAM="ngModel">
-            </div>
-            <div class="form-group">
-              <label>Date Validité CNAM</label>
-              <input type="date" class="form-control" ngModel name="validationday"  #validationday="ngModel"  >
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label>Sexe </label>
+                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                  <option selected>Choose...</option>
+                  <option value="1">M</option>
+                  <option value="2">F</option>
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <label>Téléphone </label>
+                <input type="text" class="form-control" placeholder="télephone" ngModel name="telephone"
+                       #telephone="ngModel">
+              </div>
             </div>
 
-            <div class="form-group">
-              <label>Code APCI  </label>
-              <input type="text" class="form-control" placeholder="Code APCI"  ngModel name="codeAPCI" #codeAPCI="ngModel">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label>Date Création </label>
+                <input type="date" class="form-control" ngModel name="creationday" #creationday="ngModel">
+              </div>
+              <div class="form-group col-md-6">
+                <label>Date Naissance</label>
+                <input type="date" class="form-control" ngModel name="birthday" #birthday="ngModel">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label>Type CNAM</label>
+                <input type="text" class="form-control" ngModel name="typeCNAM" #typeCNAM="ngModel">
+              </div>
+              <div class="form-group col-md-6">
+                <label>Numéro Matricule CNAM </label>
+                <input type="text" class="form-control" placeholder="Numéro Matricule CNAM" ngModel name="numMatCNAM"
+                       #numMAtCNAM="ngModel">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label>Date Validité CNAM</label>
+                <input type="date" class="form-control" ngModel name="validationday" #validationday="ngModel">
+              </div>
+              <div class="form-group col-md-6">
+                <label>Code APCI </label>
+                <input type="text" class="form-control" placeholder="Code APCI" ngModel name="codeAPCI"
+                       #codeAPCI="ngModel">
+              </div>
             </div>
 
             <div class="text-center">
-              <button type="submit" class="btn btn-primary">Enregistrer</button>
+              <button type="submit" class="btn btn-primary"  style="border-top-left-radius: 0;
+                            border-bottom-left-radius: 0; ">Enregistrer</button>
             </div>
           </form>
 
@@ -62,7 +92,6 @@
       </div>
     </div>
 
-<br>
     <div class="col-12">
       <div class="card">
         <div class="card-body">
@@ -72,35 +101,38 @@
           <hr>
 
           <br>
-          <form  >
-          <table class="table table-striped border">
-            <thead>
-            <tr>
-              <th>Numéro Dossier</th>
-              <th>Nom</th>
-              <th>Prénom</th>
-              <th>Date Naissance</th>
-              <th>Sexe</th>
-              <th>Type CNAM</th>
-              <th>Action</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let patient of listPatients._embedded.patients" >
-              <td >{{patient.id}}</td>
-              <td>{{patient.firstname}}</td>
-              <td>{{patient.lastname}}</td>
-              <td>{{patient.birthday}}</td>
-              <td>{{patient.sexe}}</td>
-              <td>{{patient.typeCNAM}}</td>
-              <button  class="btn btn-outline-primary"  (click)="onOpenDossier(patient)"><mat-icon>visibility</mat-icon></button>
-            </tr>
-            </tbody>
-          </table>
+          <form>
+            <table class="table table-striped border">
+              <thead>
+              <tr>
+                <th>Numéro Dossier</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Date Naissance</th>
+                <th>Sexe</th>
+                <th>Type CNAM</th>
+                <th>Action</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let patient of listPatients._embedded.patients">
+                <td>{{patient.id}}</td>
+                <td>{{patient.firstname}}</td>
+                <td>{{patient.lastname}}</td>
+                <td>{{patient.birthday}}</td>
+                <td>{{patient.sexe}}</td>
+                <td>{{patient.typeCNAM}}</td>
+                <button class="btn btn-outline-primary btn-sm" (click)="onOpenDossier(patient)">
+                  <mat-icon>visibility</mat-icon>
+                </button>
+              </tr>
+              </tbody>
+            </table>
           </form>
 
         </div>
       </div>
     </div>
-        </div>
-      </div>
+  </div>
+</div>
+
