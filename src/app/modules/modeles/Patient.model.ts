@@ -10,5 +10,6 @@ export class Patient {
   public typeCNAM:string;
   public validationday:Date;
   public codeAPCI:number;
+  public  consultations :any;
 
 }

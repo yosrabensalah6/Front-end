@@ -51,10 +51,10 @@ const routes: Routes = [
       component: OrdonnancesComponent
     },
     {
-      path:'visites',
+      path:'visites/:url',
       component:VisitesComponent
     },{
-    path:'bilans',
+    path:'bilans/:url',
       component:BilansComponent
     },{
     path:'documents',

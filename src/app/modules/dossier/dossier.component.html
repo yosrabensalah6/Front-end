@@ -43,47 +43,6 @@
 
 
           <br>
-          <div class="offset-12 ">
-            <div class="card">
-              <div class="card-body">
-                <mat-icon style="color: orange;">folder_open</mat-icon>
-                <span style="color: #1a69bc">Ordonnances</span>
-
-                <div class="row justify-content-end">
-                  <form>
-                    <div class="row no-gutters">
-                      <div class="col-auto">
-                        <button class="btn btn-outline-success" type="submit" routerLink="/ordonnances"><mat-icon>add</mat-icon>Ajouter</button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-                <hr>
-                <br>
-                <table class="table table-striped border">
-                  <thead>
-                  <tr>
-                    <th>Date</th>
-                    <th>Médicaments </th>
-
-                    <th>Action</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td>12-04-22</td>
-                    <td>Fervex</td>
-
-                    <td>delete </td>
-                  </tr>
-
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-          <br>
           <div class=" col-12">
 
             <div class="card">
@@ -94,7 +53,7 @@
                   <form>
                     <div class="row no-gutters">
                       <div class="col-auto">
-                        <button class="btn btn-outline-success" type="submit" routerLink="/visites"><mat-icon>add</mat-icon>Ajouter</button>
+                        <button class="btn btn-outline-success"  (click)="onAjouterConsultation(currentPatient)"><mat-icon>add</mat-icon>Ajouter</button>
                       </div>
                     </div>
                   </form>
@@ -112,47 +71,83 @@
                     </div>
                   </form>
 
-                <table class="table table-striped border">
+                <table class="table table-striped border" >
                   <thead>
                   <tr>
                     <th>Date </th>
                     <th>Motif</th>
-                    <th>Action</th>
+                    <th>Temperature</th>
+                    <th>poids</th>
+                    <th>Tension Arterielle</th>
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td>12-04-25 15:15</td>
-                    <td>Malade</td>
-                    <td>delete </td>
+                  <tr  *ngFor=" let consultation of currentPatient.consultations">
+                    <td>{{consultation.dateInsert}}</td>
+                    <td>{{consultation.motif}}</td>
+                    <td>{{consultation.temperature}} </td>
+                    <td>{{consultation.weight}}</td>
+                    <td>{{consultation.bloodpressure}}</td>
                   </tr>
-                  <tr>
-                    <td>12-04-25 15:15</td>
-                    <td>Malade</td>
-                    <td>delete </td>
-                  </tr>
-                  <tr>
-                    <td>12-04-25 15:15</td>
-                    <td>Malade</td>
-                    <td>delete </td>
-                  </tr>
+
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
 
+            <br>
+            <div class="offset-12 ">
+              <div class="card">
+                <div class="card-body">
+                  <mat-icon style="color: orange;">folder_open</mat-icon>
+                  <span style="color: #1a69bc">Ordonnances</span>
+
+                  <div class="row justify-content-end">
+                    <form>
+                      <div class="row no-gutters">
+                        <div class="col-auto">
+                          <button class="btn btn-outline-success" type="submit" routerLink="/ordonnances"><mat-icon>add</mat-icon>Ajouter</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <hr>
+                  <br>
+                  <table class="table table-striped border">
+                    <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Médicaments </th>
+
+                      <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td>12-04-22</td>
+                      <td>Fervex</td>
+
+                      <td>delete </td>
+                    </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
           <br>
           <div class="col-12 ">
             <div class="card">
               <div class="card-body">
                 <mat-icon style="color: orange;">folder_open</mat-icon>
-                <span style="color: #1a69bc">Bilans: Bio -Radio-Kiné</span>
+                <span style="color: #1a69bc">Cetificats Medical </span>
                 <div class="row justify-content-end">
                   <form>
                     <div class="row no-gutters">
                       <div class="col-auto">
-                        <button class="btn btn-outline-success" type="submit" routerLink="/bilans" ><mat-icon>add</mat-icon>Ajouter</button>
+                        <button class="btn btn-outline-success" type="submit" (click)="onAjouterCertif(currentPatient)"  ><mat-icon>add</mat-icon>Ajouter</button>
                       </div>
                     </div>
                   </form>
@@ -162,26 +157,18 @@
                 <table class="table table-striped border">
                   <thead>
                   <tr>
-                    <th>Date </th>
-                    <th>Libéllées</th>
-                    <th>Action</th>
+                   <th>Date Creation</th>
+                    <th>Date Debut</th>
+                    <th>Date Fin</th>
+                    <th>Description</th>
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td>12-04-25 15:15</td>
-                    <td>Malade</td>
-                    <td>delete </td>
-                  </tr>
-                  <tr>
-                    <td>12-04-25 15:15</td>
-                    <td>Malade</td>
-                    <td>delete </td>
-                  </tr>
-                  <tr>
-                    <td>12-04-25 15:15</td>
-                    <td>Malade</td>
-                    <td>delete </td>
+                  <tr *ngFor="let certificate of currentPatient.medicalCertificates">
+                    <td>{{certificate.dateInsert}}</td>
+                    <td>{{certificate.datedebut}}</td>
+                    <td>{{certificate.datefin}}</td>
+                    <td>{{certificate.description}}</td>
                   </tr>
                   </tbody>
                 </table>
@@ -189,52 +176,52 @@
             </div>
           </div>
 
-          <br>
-          <div class="col-12 ">
-            <div class="card">
-              <div class="card-body">
-                <mat-icon style="color: orange;">folder_open</mat-icon>
-                <span style="color: #1a69bc">Documents-Images-Vidéos</span>
-                <div class="row justify-content-end">
-                  <form>
-                    <div class="row no-gutters">
-                      <div class="col-auto">
-                        <button class="btn btn-outline-success" type="submit" routerLink="/documents"><mat-icon>add</mat-icon>Ajouter</button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-                <hr>
-                <br>
-                <table class="table table-striped border">
-                  <thead>
-                  <tr>
-                    <th>Date </th>
-                    <th>Libéllées</th>
-                    <th>Action</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td>12-04-25 15:15</td>
-                    <td>Malade</td>
-                    <td>delete </td>
-                  </tr>
-                  <tr>
-                    <td>12-04-25 15:15</td>
-                    <td>Malade</td>
-                    <td>delete </td>
-                  </tr>
-                  <tr>
-                    <td>12-04-25 15:15</td>
-                    <td>Malade</td>
-                    <td>delete </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
+<!--          <br>-->
+<!--          <div class="col-12 ">-->
+<!--            <div class="card">-->
+<!--              <div class="card-body">-->
+<!--                <mat-icon style="color: orange;">folder_open</mat-icon>-->
+<!--                <span style="color: #1a69bc">Documents-Images-Vidéos</span>-->
+<!--                <div class="row justify-content-end">-->
+<!--                  <form>-->
+<!--                    <div class="row no-gutters">-->
+<!--                      <div class="col-auto">-->
+<!--                        <button class="btn btn-outline-success" type="submit" routerLink="/documents"><mat-icon>add</mat-icon>Ajouter</button>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </form>-->
+<!--                </div>-->
+<!--                <hr>-->
+<!--                <br>-->
+<!--                <table class="table table-striped border">-->
+<!--                  <thead>-->
+<!--                  <tr>-->
+<!--                    <th>Date </th>-->
+<!--                    <th>Libéllées</th>-->
+<!--                    <th>Action</th>-->
+<!--                  </tr>-->
+<!--                  </thead>-->
+<!--                  <tbody>-->
+<!--                  <tr>-->
+<!--                    <td>12-04-25 15:15</td>-->
+<!--                    <td>Malade</td>-->
+<!--                    <td>delete </td>-->
+<!--                  </tr>-->
+<!--                  <tr>-->
+<!--                    <td>12-04-25 15:15</td>-->
+<!--                    <td>Malade</td>-->
+<!--                    <td>delete </td>-->
+<!--                  </tr>-->
+<!--                  <tr>-->
+<!--                    <td>12-04-25 15:15</td>-->
+<!--                    <td>Malade</td>-->
+<!--                    <td>delete </td>-->
+<!--                  </tr>-->
+<!--                  </tbody>-->
+<!--                </table>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
 
             <br>
             <div class="offset-12 ">

@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {Patient} from "../modeles/Patient.model";
+import {Visite} from "../modeles/Visite.model";
+import {Certif} from "../modeles/Certif.model";
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +19,12 @@ export class PatientService {
   public getRessouces(url){
     return this.httpClient.get(this.hosts+url)
   }
-
+public saveVisite(url,data):Observable<Visite>{
+    return this.httpClient.post<Visite>(url,data)
+}
+public saveCertif(url,data):Observable<Certif>{
+    return this.httpClient.post<Certif>(url,data);
+}
 
   getPatient(url):Observable<Patient> {
     return this.httpClient.get<Patient>(url);

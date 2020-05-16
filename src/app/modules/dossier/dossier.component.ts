@@ -15,12 +15,15 @@ export class DossierComponent implements OnInit {
 
 
 
+
+
   constructor(public patientService: PatientService,
               private activatedRoute: ActivatedRoute,
               private router: Router) {
   }
   ngOnInit(): void {
     let url=JSON.parse(atob(this.activatedRoute.snapshot.params["url"]));
+    console.log('*****************',url)
     this.patientService.getPatient(url)
       .subscribe(data=>{
         this.currentPatient=data;
@@ -29,6 +32,16 @@ export class DossierComponent implements OnInit {
          console.log(err);
 
       })
+
   }
 
+  onAjouterConsultation(patient){
+    let url = btoa(JSON.stringify(patient._links.patient.href));
+    this.router.navigateByUrl("/visites/" + url);
+  }
+
+  onAjouterCertif(patient) {
+    let url = btoa(JSON.stringify(patient._links.patient.href));
+    this.router.navigateByUrl("/bilans/" + url);
+  }
 }
