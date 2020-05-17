@@ -8,22 +8,26 @@
           <span style="color: #1a69bc">Affecter à l'Hopital </span>
           <hr>
 
-          <form>
-            <div class="form-group">
-              <label>Hopital </label>
-              <input type="text" class="form-control" >
+          <form      #f="ngForm" (ngSubmit)="onsaveLettreHopital(f.value)">
+<!--        -->
+            <div class="form-group" >
+              <label >Details Hopital </label>
+              <select class="custom-select mr-sm-2" id="inlineFormCustomSelect"  ngModel  name="hopital" #hopital="ngModel" >
+                <option selected   >Choose...</option>
+                <option *ngFor="let hopital of listHopitaux._embedded.polyclinicHospitals" value="{{hopital._links.self.href}}" >{{hopital.name}} --- {{hopital.adresse}} </option>
+
+
+              </select>
             </div>
+
             <div class="form-group">
-              <label>Date  </label>
-              <input type="date" class="form-control" >
+              <label>Date  Insertion </label>
+              <input type="date" class="form-control" ngModel name="dateInsert" #dateInsert="ngModel">
             </div>
+
             <div class="form-group">
-              <label>importer lettre à l'Hopital </label>
-              <input type="file" class="form-control"  >
-            </div>
-            <div class="form-group">
-              <label> Commentaires </label>
-              <input type="text" class="form-control" placeholder="commentaire">
+              <label> Objet </label>
+              <input type="text" class="form-control" placeholder="Objet" ngModel name="objet" #objet="ngModel">
             </div>
             <div class="text-center">
               <button type="submit" class="btn btn-primary">Enregistrer</button>

@@ -14,7 +14,6 @@ import { DossierComponent } from './modules/dossier/dossier.component';
 import { OrdonnancesComponent } from './modules/ordonnances/ordonnances.component';
 import { VisitesComponent } from './modules/visites/visites.component';
 import { BilansComponent } from './modules/bilans/bilans.component';
-import { DocumentsComponent } from './modules/documents/documents.component';
 import { ConfereComponent } from './modules/confere/confere.component';
 import { HopitalComponent } from './modules/hopital/hopital.component';
 import {FormsModule} from "@angular/forms";
@@ -31,7 +30,6 @@ import {HttpClientModule} from "@angular/common/http";
     OrdonnancesComponent,
     VisitesComponent,
     BilansComponent,
-    DocumentsComponent,
     ConfereComponent,
     HopitalComponent,
   ],

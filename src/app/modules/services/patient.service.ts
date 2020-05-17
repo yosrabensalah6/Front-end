@@ -4,6 +4,9 @@ import {HttpClient} from "@angular/common/http";
 import {Patient} from "../modeles/Patient.model";
 import {Visite} from "../modeles/Visite.model";
 import {Certif} from "../modeles/Certif.model";
+import {LettreConfer} from "../modeles/LettreConfer.medel";
+import {LettreHopital} from "../modeles/LettreHopital.model";
+
 
 @Injectable({
   providedIn: 'root'
@@ -30,4 +33,23 @@ public saveCertif(url,data):Observable<Certif>{
     return this.httpClient.get<Patient>(url);
 
   }
+  getConfer(url):Observable<LettreConfer> {
+    return this.httpClient.get<LettreConfer>(url);
+
+  }
+  onSaveLettreConfer(url,data):Observable<LettreConfer>{
+    return this.httpClient.post<LettreConfer>(url,data);
+
+  }
+
+  getHopital(url){
+    return this.httpClient.get(this.hosts+url);
+
+  }
+
+  saveLettreHopital(url,data):Observable<LettreHopital>{
+    return this.httpClient.post<LettreHopital>(url,data);
+
+  }
+
 }

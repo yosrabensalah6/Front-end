@@ -8,22 +8,27 @@
           <span style="color: #1a69bc">Affecter au Confère </span>
           <hr>
 
-          <form>
-            <div class="form-group">
-              <label>Confère </label>
-              <input type="text" class="form-control" >
+          <form #f="ngForm" (ngSubmit)="onsaveLettre(f.value)">
+            <div class="form-group" >
+              <label >Details Confère </label>
+              <select class="custom-select mr-sm-2" id="inlineFormCustomSelect"  ngModel  name="confer" #confer="ngModel" >
+                <option selected   >Choose...</option>
+                <option *ngFor="let confer of listConfer._embedded.confers" value="{{confer._links.self.href}}" >{{confer.firstname}} {{confer.lastname}} -- {{confer.specialite}}</option>
+
+
+              </select>
             </div>
             <div class="form-group">
-              <label>Date  </label>
-              <input type="date" class="form-control" >
+              <label>Date Insertion </label>
+              <input type="date" class="form-control" ngModel name="dateInsert"  #dateInsert="ngModel">
             </div>
             <div class="form-group">
-              <label>importer lettre au confère </label>
-              <input type="file" class="form-control"  >
+              <label>Objet Lettre</label>
+              <input type="text" class="form-control" ngModel name="objet" #objet="ngModel"  >
             </div>
             <div class="form-group">
-              <label> Commentaires </label>
-              <input type="text" class="form-control" placeholder="commentaire">
+              <label> Description </label>
+              <textarea type="text" class="form-control" placeholder="description " ngModel name="description" #description="ngModel"></textarea>
             </div>
             <div class="text-center">
               <button type="submit" class="btn btn-primary">Enregistrer</button>

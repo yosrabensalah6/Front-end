@@ -234,7 +234,7 @@
                     <form>
                       <div class="row no-gutters">
                         <div class="col-auto">
-                          <button class="btn btn-outline-success" type="submit" routerLink="/confere"><mat-icon>add</mat-icon>Ajouter</button>
+                          <button class="btn btn-outline-success" type="submit" (click)="onAjouterLettreToConfer(currentPatient)"><mat-icon>add</mat-icon>Ajouter</button>
                         </div>
                       </div>
                     </form>
@@ -244,12 +244,22 @@
                   <table class="table table-striped border">
                     <thead>
                     <tr>
-                      <th>Confère</th>
-                      <th>Date </th>
-                      <th>Lettre au confère</th>
-                      <th>Action</th>
+
+                      <th>Date Creation </th>
+                      <th>Objet Lettre</th>
+                      <th>Description</th>
+                      <th>Detail Confere</th>
                     </tr>
                     </thead>
+                    <tbody>
+                    <tr *ngFor="let confer of currentPatient.letterToConfers ">
+                      <td>{{confer.dateInsert}}</td>
+                      <td>{{confer.objet}}</td>
+                      <td>{{confer.description}}</td>
+                      <button class="btn btn-primary btn-sm" (click)="onShowDetails(currentLetter)"><mat-icon>visibility</mat-icon></button>
+                    </tr>
+
+                    </tbody>
 
                   </table>
                 </div>
@@ -268,7 +278,7 @@
                     <form>
                       <div class="row no-gutters">
                         <div class="col-auto">
-                          <button class="btn btn-outline-success" type="submit" routerLink="/hopital"><mat-icon>add</mat-icon>Ajouter</button>
+                          <button class="btn btn-outline-success" type="submit" (click)="onAjouterLettreToHopital(currentPatient)"><mat-icon>add</mat-icon>Ajouter</button>
                         </div>
                       </div>
                     </form>
@@ -278,12 +288,16 @@
                   <table class="table table-striped border">
                     <thead>
                     <tr>
-                      <th>Hopital</th>
-                      <th>Date </th>
-                      <th>Lettre à l'hopital</th>
-                      <th>Action</th>
+                      <th>Date Insertion </th>
+                      <th>Objet</th>
                     </tr>
                     </thead>
+                    <tbody>
+                    <tr *ngFor="let hopital of currentPatient.hospitalisationLettres">
+                      <td>{{hopital.dateInsert}}</td>
+                      <td>{{hopital.objet}}</td>
+                    </tr>
+                    </tbody>
 
                   </table>
                 </div>

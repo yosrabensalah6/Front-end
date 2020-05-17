@@ -11,7 +11,6 @@ import {DossierComponent} from "./modules/dossier/dossier.component";
 import {OrdonnancesComponent} from "./modules/ordonnances/ordonnances.component";
 import {VisitesComponent} from "./modules/visites/visites.component";
 import {BilansComponent} from "./modules/bilans/bilans.component";
-import {DocumentsComponent} from "./modules/documents/documents.component";
 import {ConfereComponent} from "./modules/confere/confere.component";
 import {HopitalComponent} from "./modules/hopital/hopital.component";
 
@@ -57,13 +56,10 @@ const routes: Routes = [
     path:'bilans/:url',
       component:BilansComponent
     },{
-    path:'documents',
-      component:DocumentsComponent
-    },{
-    path:'confere',
+    path:'confere/:url',
       component:ConfereComponent
     },{
-    path:'hopital',
+    path:'hopital/:url',
       component:HopitalComponent
     }]
 
