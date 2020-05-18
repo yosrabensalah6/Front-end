@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SettingsService} from '../services/settings.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Confer} from "../modeles/Confer.model";
 import {Hopital} from "../modeles/Hopital.model";
 import {Medicament} from "../modeles/Medicament.model";
@@ -113,12 +113,13 @@ export class SettingsComponent implements OnInit {
   }
 
 onSaveConfer(formdata){
+  let dateInsert = new Date().toISOString().slice(0, 19).replace('T', ' ');
     let data={
       "firstname":formdata.firstname,
     "lastname":formdata.lastname,
     "telephone":formdata.telephone,
     "adresse":formdata.adresse,
-    "dateInsert":formdata.dateInsert,
+    "dateInsert":dateInsert,
     "specialite":formdata.specialite};
     console.log(data);
     this.settingsService.saveConfer(this.settingsService.host+"/confers",data)
@@ -132,10 +133,11 @@ onSaveConfer(formdata){
 }
 
   onSaveHopital(formdata: any) {
+    let dateInsert = new Date().toISOString().slice(0, 19).replace('T', ' ');
     let data={
       "name":formdata.name,
       "adresse":formdata.adresse,
-      "dateInsert":formdata.dateInsert
+      "dateInsert":dateInsert,
     };
     console.log(data);
     this.settingsService.saveHopital(this.settingsService.host+"/polyclinicHospitals",data)
@@ -148,16 +150,18 @@ onSaveConfer(formdata){
 
 
   onSaveMedicment(formdata) {
+    let dateInsert = new Date().toISOString().slice(0, 19).replace('T', ' ');
     let data = {
     "nom":formdata.nom,
       "type":formdata.type,
       "description":formdata.description,
-      "dateInsert":formdata.dateInsert,
+      "dateInsert":dateInsert,
     };
     console.log(data);
     this.settingsService.saveMedicament(this.settingsService.host+"/medicaments",data)
       .subscribe(res=>{
         this.currentMedicament=res;
+
         console.log(res);
       },err=>{console.log(err);})
   }

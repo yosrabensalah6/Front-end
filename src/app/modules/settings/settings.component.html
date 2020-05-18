@@ -39,10 +39,7 @@
                     <label>Adresse</label>
                     <input type="text" class="form-control" placeholder="Adresse" ngModel name="adresse" #adresse="ngModel" >
                   </div>
-                  <div class="form-group">
-                    <label>Date Insertion</label>
-                    <input type="date" class="form-control" placeholder="Adresse" ngModel name="dateInsert" #dateInsert="ngModel" >
-                  </div>
+
                   <div class="text-center">
                     <button type="submit" class="btn btn-sm btn-primary" style="margin-right: 5px" >Enregistrer</button>
                     <button type="submit" class="btn btn-sm btn-danger" (click)="hideForm('Hospital')">Annuler</button>
@@ -98,10 +95,7 @@
                     <label>Type </label>
                     <input type="text" class="form-control" placeholder="Type" ngModel name="type" #type="ngModel">
                   </div>
-                  <div class="form-group">
-                    <label>Date Insertion </label>
-                    <input type="date" class="form-control" placeholder="Type" ngModel name="dateInsert" #dateInsert="ngModel">
-                  </div>
+
                   <div class="form-group">
                     <label>Description</label>
                     <textarea rows="5" class="form-control" placeholder="Description"  ngModel name="description" #description="ngModel"></textarea>
@@ -187,15 +181,10 @@
                       <textarea rows="3" class="form-control" placeholder="Adresse"  ngModel name="adresse" #adresse="ngModel"></textarea>
                     </div>
                   </div>
-                  <div class="form-row">
-                    <div class="form-group col-6">
-                      <label>Date Insertion Confer</label>
-                      <input class="form-control" type="date" placeholder="DateInsert"  ngModel name="dateInsert" #dateInsert="ngModel">
-                    </div>
-                  </div>
+
 
                   <div class="text-center">
-                    <button type="submit" class="btn btn-sm btn-primary" style="margin-right: 5px" >Enregistrer</button>
+                    <button type="submit" class="btn btn-sm btn-primary" style="margin-right: 5px"   >Enregistrer</button>
                     <button type="submit" class="btn btn-sm btn-danger" (click)="hideForm('Confer')">Annuler</button>
                   </div>
                 </form>
