@@ -1,12 +1,12 @@
 :host {
   .container{
-    padding: 20px;
+    //padding: 20px;
   }
   .card-body{
-    padding: 50px;
+    //  padding: 50px;
   }
   .col-8{
-    padding: 50px;
+    //padding: 50px;
   }
   .mat-icon {
     vertical-align: middle;
@@ -26,10 +26,12 @@
   .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   }
-.card-head{
-  display:flex;
-  justify-content: space-between;
+  .card-head{
+    display:flex;
+    justify-content: space-between;
+  }
+  .breadcrumb {
+    background-color: #d9edf7;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
 }
-
-}
-

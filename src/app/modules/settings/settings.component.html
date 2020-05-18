@@ -1,166 +1,241 @@
 <div class="container">
   <div class="row">
-
-    <div class="col-6">
-      <div class="card">
-        <div class="card-body">
-
-          <div class="card-head">
-            <div>
-              <mat-icon style="color: orange;">format_list_bulleted</mat-icon>
-              <span style="color: #1a69bc">Liste des cliniques / hôpitaux</span>
-            </div>
-            <div>
-              <button class="btn btn-sm btn-success" (click)="showForm('Hospital')">Ajouter</button>
-            </div>
-          </div>
-
-          <hr>
-          <div style="margin-bottom: 15px" *ngIf="showFormAddHospital">
-            <form>
-              <div class="form-group">
-                <label>Nom Hopital </label>
-                <input type="text" class="form-control" placeholder="Nom Hopital">
-              </div>
-
-              <div class="form-group">
-                <label>Adresse</label>
-                <input type="text" class="form-control" placeholder="Adresse">
-              </div>
-              <div class="text-center">
-                <button type="submit" class="btn btn-primary">Enregistrer</button>
-              </div>
-            </form>
-          </div>
-          <table class="table table-striped border">
-            <thead>
-            <tr>
-              <th>Nom</th>
-              <th>Prénom</th>
-              <th>Date</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>hedi chaker</td>
-              <td>aaaaa</td>
-              <td>route ain</td>
-            </tr>
-            </tbody>
-          </table>
-
-        </div>
-      </div>
-      <br>
-      <div class="card">
-        <div class="card-body">
-          <div class="card-head">
-            <div>
-              <mat-icon style="color: orange;">format_list_bulleted</mat-icon>
-              <span style="color: #1a69bc">Listes des Médicament</span>
-            </div>
-            <div>
-              <button class="btn btn-sm btn-success" (click)="showForm('Medicament')">Ajouter</button>
-            </div>
-          </div>
-          <hr>
-          <div style="margin-bottom: 15px" *ngIf="showFormAddMedicament">
-            <form>
-              <div class="form-group">
-                <label>Nom </label>
-                <input type="text" class="form-control" placeholder="Nom">
-              </div>
-              <div class="form-group">
-                <label>Type </label>
-                <input type="text" class="form-control" placeholder="Type">
-              </div>
-              <div class="form-group">
-                <label>Description</label>
-                <textarea rows="5"  class="form-control" placeholder="Description"></textarea>
-              </div>
-              <div class="text-center">
-                <button type="submit" class="btn btn-primary">Enregistrer</button>
-              </div>
-            </form>
-          </div>
-          <table class="table table-striped border">
-            <thead>
-            <tr>
-              <th>Nom</th>
-              <th>Prénom</th>
-              <th>Date</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>hedi chaker</td>
-              <td>aaaaa</td>
-              <td>route ain</td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+    <div class="col-lg-12">
+      <!-- breadcrumb-->
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+          <li class="breadcrumb-item"><a href="#">Paramétrage</a></li>
+        </ol>
+      </nav>
     </div>
+    <div class="col">
 
-    <div class="col-6">
-      <div class="card">
-        <div class="card-body">
+      <div class="row" style="margin-bottom: 30px">
+        <div class="col-6">
+          <div class="card">
+            <div class="card-body">
 
-          <div class="card-head">
-            <div>
-              <mat-icon style="color: orange;">format_list_bulleted</mat-icon>
-              <span style="color: #1a69bc">Listes des Confères</span>
-            </div>
-            <div>
-              <button class="btn btn-sm btn-success"  (click)="showForm('Confer')">Ajouter</button>
+              <div class="card-head">
+                <div>
+                  <mat-icon style="color: orange;">format_list_bulleted</mat-icon>
+                  <span style="color: #1a69bc">Liste des cliniques / hôpitaux</span>
+                </div>
+                <div>
+                  <button class="btn btn-sm btn-success" (click)="showForm('Hospital')">Ajouter</button>
+                </div>
+              </div>
+
+              <hr>
+
+              <div style="margin-bottom: 15px" *ngIf="showFormAddHospital">
+                <form #f1="ngForm" (ngSubmit)="onSaveHopital(f1.value)">
+                  <div class="form-group">
+                    <label>Nom Hopital </label>
+                    <input type="text" class="form-control" placeholder="Nom Hopital" ngModel name="name" #name="ngModel"  >
+                  </div>
+
+                  <div class="form-group">
+                    <label>Adresse</label>
+                    <input type="text" class="form-control" placeholder="Adresse" ngModel name="adresse" #adresse="ngModel" >
+                  </div>
+                  <div class="form-group">
+                    <label>Date Insertion</label>
+                    <input type="date" class="form-control" placeholder="Adresse" ngModel name="dateInsert" #dateInsert="ngModel" >
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-sm btn-primary" style="margin-right: 5px" >Enregistrer</button>
+                    <button type="submit" class="btn btn-sm btn-danger" (click)="hideForm('Hospital')">Annuler</button>
+                  </div>
+                </form>
+              </div>
+              <table class="table table-striped border">
+                <thead>
+                <tr>
+                  <th>Nom</th>
+                  <th>Adresse</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let p of listPolyclinicHospitals._embedded.polyclinicHospitals">
+                  <td>{{p.name}}</td>
+                  <td>{{p.adresse}}</td>
+                </tr>
+                </tbody>
+              </table>
+              <nav aria-label="Page navigation example">
+                <ul *ngIf="pagePolyclinicHospitals" class="pagination  pagination-sm">
+                  <li class="page-item clickable" [ngClass]="i==currentPagePolyclinicHospital?'active':''"
+                      *ngFor="let p of pagePolyclinicHospitals;let i=index">
+                    <a class="page-link" (click)="onPagePolyclinicHospitals(i)">{{i}}</a>
+                  </li>
+                </ul>
+              </nav>
             </div>
           </div>
+        </div>
 
-          <hr>
-          <div style="margin-bottom: 15px" *ngIf="showFormAddConfer">
-            <form>
-              <div class="form-group">
-                <label>Nom </label>
-                <input type="text" class="form-control" placeholder="Nom">
+        <div class="col-6">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-head">
+                <div>
+                  <mat-icon style="color: orange;">format_list_bulleted</mat-icon>
+                  <span style="color: #1a69bc">Listes des Médicament</span>
+                </div>
+                <div>
+                  <button class="btn btn-sm btn-success" (click)="showForm('Medicament')">Ajouter</button>
+                </div>
               </div>
-              <div class="form-group">
-                <label>Prénom </label>
-                <input type="text" class="form-control" placeholder="Prénom">
+              <hr>
+              <div style="margin-bottom: 15px" *ngIf="showFormAddMedicament">
+                <form #f2="ngForm" (ngSubmit)="onSaveMedicment(f2.value)" >
+                  <div class="form-group">
+                    <label>Nom </label>
+                    <input type="text" class="form-control" placeholder="Nom" ngModel name="nom" #nom="ngModel" >
+                  </div>
+                  <div class="form-group">
+                    <label>Type </label>
+                    <input type="text" class="form-control" placeholder="Type" ngModel name="type" #type="ngModel">
+                  </div>
+                  <div class="form-group">
+                    <label>Date Insertion </label>
+                    <input type="date" class="form-control" placeholder="Type" ngModel name="dateInsert" #dateInsert="ngModel">
+                  </div>
+                  <div class="form-group">
+                    <label>Description</label>
+                    <textarea rows="5" class="form-control" placeholder="Description"  ngModel name="description" #description="ngModel"></textarea>
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-sm btn-primary" style="margin-right: 5px" >Enregistrer</button>
+                    <button type="submit" class="btn btn-sm btn-danger" (click)="hideForm('Medicament')">Annuler</button>
+                  </div>
+                </form>
               </div>
-              <div class="form-group">
-                <label>Spécialité</label>
-                <input type="text" class="form-control" placeholder="Spécialité">
-              </div>
-              <div class="form-group">
-                <label>Télephone</label>
-                <input type="text" class="form-control" placeholder="Téléphone">
-              </div>
-              <div class="text-center">
-                <button type="submit" class="btn btn-primary">Enregistrer</button>
-              </div>
-            </form>
+              <table class="table table-striped border">
+                <thead>
+                <tr>
+                  <th>Nom</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let m of listMedicaments._embedded.medicaments">
+                  <td>{{m.nom}}</td>
+                  <td>{{m.type}}</td>
+                  <td>{{m.description}}</td>
+                </tr>
+                </tbody>
+              </table>
+              <nav aria-label="Page navigation example">
+                <ul *ngIf="pageMedicaments" class="pagination  pagination-sm">
+                  <li class="page-item clickable" [ngClass]="i==currentPageMedicament?'active':''"
+                      *ngFor="let p of pageMedicaments;let i=index">
+                    <a class="page-link" (click)="onPageMedicaments(i)">{{i}}</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
           </div>
-          <table class="table table-striped border">
-            <thead>
-            <tr>
-              <th>Nom</th>
-              <th>Prénom</th>
-              <th>Date</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>hedi chaker</td>
-              <td>aaaaa</td>
-              <td>route ain</td>
-            </tr>
-            </tbody>
-          </table>
+        </div>
+
+      </div >
+
+      <div class="row">
+        <div class="col-8">
+          <div class="card">
+            <div class="card-body">
+
+              <div class="card-head">
+                <div>
+                  <mat-icon style="color: orange;">format_list_bulleted</mat-icon>
+                  <span style="color: #1a69bc">Listes des Confères</span>
+                </div>
+                <div>
+                  <button class="btn btn-sm btn-success" (click)="showForm('Confer')">Ajouter</button>
+                </div>
+              </div>
+
+              <hr>
+              <div style="margin-bottom: 15px" *ngIf="showFormAddConfer">
+                <form #f="ngForm" (ngSubmit)="onSaveConfer(f.value)">
+
+                  <div class="form-row">
+                    <div class="form-group col-6">
+                      <label>Nom </label>
+                      <input type="text" class="form-control" placeholder="Nom" ngModel name="firstname" #firstname="ngModel">
+                    </div>
+                    <div class="form-group col-6">
+                      <label>Prénom </label>
+                      <input type="text" class="form-control" placeholder="Prénom"  ngModel name="lastname" #lastname="ngModel">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-6">
+                      <label>Spécialité</label>
+                      <input type="text" class="form-control" placeholder="Spécialité"  ngModel name="specialite" #specialite="ngModel">
+                    </div>
+                    <div class="form-group col-6">
+                      <label>Téléphone</label>
+                      <input type="text" class="form-control" placeholder="Téléphone"  ngModel name="telephone" #telephone="ngModel" >
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-6">
+                      <label>Adresse</label>
+                      <textarea rows="3" class="form-control" placeholder="Adresse"  ngModel name="adresse" #adresse="ngModel"></textarea>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-6">
+                      <label>Date Insertion Confer</label>
+                      <input class="form-control" type="date" placeholder="DateInsert"  ngModel name="dateInsert" #dateInsert="ngModel">
+                    </div>
+                  </div>
+
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-sm btn-primary" style="margin-right: 5px" >Enregistrer</button>
+                    <button type="submit" class="btn btn-sm btn-danger" (click)="hideForm('Confer')">Annuler</button>
+                  </div>
+                </form>
+              </div>
+
+              <table class="table table-striped border">
+                <thead>
+                <tr>
+                  <th>Nom</th>
+                  <th>Prénom</th>
+                  <th>Spécialité</th>
+                  <th>Adresse</th>
+                  <th>Téléphone</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let c of listConfers._embedded.confers">
+                  <td>{{c.firstname}}</td>
+                  <td>{{c.lastname}}</td>
+                  <td>{{c.specialite}}</td>
+                  <td>{{c.adresse}}</td>
+                  <td>{{c.telephone}}</td>
+                </tr>
+                </tbody>
+              </table>
+              <nav aria-label="Page navigation example">
+                <ul *ngIf="pageConfers" class="pagination  pagination-sm">
+                  <li class="page-item clickable" [ngClass]="i==currentPageConfer?'active':''"
+                      *ngFor="let p of pageConfers;let i=index">
+                    <a class="page-link" (click)="onPageConfer(i)">{{i}}</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
         </div>
       </div>
+
     </div>
   </div>
-</div>
 
+</div>
 

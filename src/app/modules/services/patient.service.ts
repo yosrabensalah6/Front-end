@@ -33,8 +33,8 @@ public saveCertif(url,data):Observable<Certif>{
     return this.httpClient.get<Patient>(url);
 
   }
-  getConfer(url):Observable<LettreConfer> {
-    return this.httpClient.get<LettreConfer>(url);
+  getConfer(url) {
+    return this.httpClient.get(this.hosts+url);
 
   }
   onSaveLettreConfer(url,data):Observable<LettreConfer>{
