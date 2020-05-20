@@ -19,6 +19,8 @@ import { HopitalComponent } from './modules/hopital/hopital.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 
+import { DetailsOrdonnanceComponent } from './modules/details-ordonnance/details-ordonnance.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +34,7 @@ import {HttpClientModule} from "@angular/common/http";
     BilansComponent,
     ConfereComponent,
     HopitalComponent,
+    DetailsOrdonnanceComponent,
   ],
   imports: [
     BrowserModule,

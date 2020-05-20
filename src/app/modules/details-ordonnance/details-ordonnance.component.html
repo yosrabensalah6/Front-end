@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+
+
+
+  <div class="col-8">
+  <div class="card">
+    <div class="card-body">
+
+      <mat-icon style="color: orange;">assignment</mat-icon>
+      <span style="color: #1a69bc; margin-left:10px">Ordonnance</span>
+      <hr>
+
+      <table class="table table-striped table-bordered">
+        <thead>
+        <tr>
+          <th>Nom medicament</th>
+          <th>Type</th>
+          <th>Nombre de prise</th>
+          <th>dose</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let l of listligneordonnance._embedded.ligneOrdonnances">
+          <td>{{l.medicament.nom}}</td>
+          <td>{{l.medicament.type}}</td>
+          <td>{{l.nbprise}}</td>
+          <td>{{l.dosage}}</td>
+
+        </tr>
+
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+
+

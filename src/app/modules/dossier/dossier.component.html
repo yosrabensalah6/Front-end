@@ -107,7 +107,7 @@
                     <form>
                       <div class="row no-gutters">
                         <div class="col-auto">
-                          <button class="btn btn-outline-success" type="submit" routerLink="/ordonnances"><mat-icon>add</mat-icon>Ajouter</button>
+                          <button class="btn btn-outline-success" type="submit" (click)="onAjouterOrdonnance(currentPatient)"><mat-icon>add</mat-icon>Ajouter</button>
                         </div>
                       </div>
                     </form>
@@ -117,19 +117,16 @@
                   <table class="table table-striped border">
                     <thead>
                     <tr>
-                      <th>Date</th>
-                      <th>Médicaments </th>
-
-                      <th>Action</th>
+                      <th>Date Ordonnace</th>
+                      <th> Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                      <td>12-04-22</td>
-                      <td>Fervex</td>
-
-                      <td>delete </td>
+                    <tr *ngFor="let ordonnance of  currentPatient.ordonnances">
+                      <td>{{ordonnance.dateInsert}}</td>
+                      <button (click)="onShowOrdonnance(ordonnance)" ><mat-icon>visibility</mat-icon></button>
                     </tr>
+
 
                     </tbody>
                   </table>

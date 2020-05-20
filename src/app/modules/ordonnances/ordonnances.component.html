@@ -1,34 +1,94 @@
 <div class="container">
   <div class="row">
-    <div class="col-6 ">
+
+    <div class="col-lg-12">
+      <!-- breadcrumb-->
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+          <li class="breadcrumb-item"><a href="#">Patient</a></li>
+          <li class="breadcrumb-item"><a href="#">Dossier médical</a></li>
+          <li class="breadcrumb-item"><a href="#">Ordonnance</a></li>
+        </ol>
+      </nav>
+    </div>
+    <div class="col-4">
       <div class="card">
         <div class="card-body">
 
-          <mat-icon style="color: orange;">schedule</mat-icon>
-          <span style="color: #1a69bc">Ajouter Ordonnance</span>
+          <mat-icon style="color: orange;">add</mat-icon>
+          <span style="color: #1a69bc; margin-left:10px">Ajouter médicament</span>
           <hr>
 
-          <form>
+          <form #f="ngForm" (ngSubmit)="onAddMedicamentToOrdonnance(f.value)">
             <div class="form-group">
               <label>Medicaments </label>
-              <input type="text" class="form-control" >
+              <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" ngModel name="medicament">
+                <option selected>Choose...</option>
+                <option *ngFor="let medicament of listMedicaments._embedded.medicaments"
+                        value="{{medicament._links.self.href}}-{{medicament.nom}}-{{medicament.type}}">
+                  {{medicament.nom}} de type {{medicament.type}}
+                </option>
+                medicament
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Nombre de prise </label>
+              <input type="number" class="form-control" placeholder="0" ngModel name="nbprise">
             </div>
             <div class="form-group">
               <label>dose </label>
-              <input type="text" class="form-control" placeholder="dose">
+              <input type="number" class="form-control" placeholder="0" ngModel name="dosage">
             </div>
             <div class="form-group">
-              <label>période  </label>
-              <input  type="text" class="form-control" placeholder="période">
+              <label>période </label>
+              <textarea rows="3" type="text" class="form-control" placeholder="période" ngModel name="periode">
+              </textarea>
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-primary">Enregistrer</button>
+              <button type="submit" class="btn btn-sm btn-primary">Ajouter médicament</button>
             </div>
           </form>
 
         </div>
       </div>
     </div>
+    <div class="col-8">
+      <div class="card">
+        <div class="card-body">
+
+          <mat-icon style="color: orange;">assignment</mat-icon>
+          <span style="color: #1a69bc; margin-left:10px">Ordonnance</span>
+          <hr>
+
+          <table class="table table-striped table-bordered">
+            <thead>
+            <tr>
+              <th>Nom medicament</th>
+              <th>Type</th>
+              <th>Nombre de prise</th>
+              <th>dose</th>
+              <th>période</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let l of listLigneOrdonnances">
+              <td>{{l.medicamentNom}}</td>
+              <td>{{l.medicamentType}}</td>
+              <td>{{l.nbprise}}</td>
+              <td>{{l.dosage}}</td>
+              <td>{{l.periode}}</td>
+            </tr>
+
+            </tbody>
+          </table>
+          <div class="text-center">
+            <button type="submit" class="btn btn-sm btn-primary" (click)="onSaveOrdonnance()">Enregistrer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 

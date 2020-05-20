@@ -6,6 +6,10 @@ import {Visite} from "../modeles/Visite.model";
 import {Certif} from "../modeles/Certif.model";
 import {LettreConfer} from "../modeles/LettreConfer.medel";
 import {LettreHopital} from "../modeles/LettreHopital.model";
+import {OrdonnancesComponent} from "../ordonnances/ordonnances.component";
+import {Ordonnance} from "../modeles/Ordonnance.model";
+import {LigneOrdonnance} from "../modeles/LigneOrdonnance.model";
+import {Medicament} from "../modeles/Medicament.model";
 
 
 @Injectable({
@@ -51,5 +55,17 @@ public saveCertif(url,data):Observable<Certif>{
     return this.httpClient.post<LettreHopital>(url,data);
 
   }
+public saveOrdonnance(url,data):Observable<Ordonnance>{
+    return this.httpClient.post<Ordonnance>(url,data);
+
+}
+public saveLigneOrdonnance(url,data):Observable<LigneOrdonnance>{
+    return this.httpClient.post<LigneOrdonnance>(url,data);
+}
+public getOrdonnance(url){
+    return  this.httpClient.get(this.hosts+url);
+}
+
+
 
 }

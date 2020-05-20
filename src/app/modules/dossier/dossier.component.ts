@@ -12,12 +12,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class DossierComponent implements OnInit {
   private currentPatient: Patient;
-
-
-
-
-
-
+  private listOrdonnance;
 
 
 
@@ -40,6 +35,7 @@ export class DossierComponent implements OnInit {
 
   }
 
+
   onAjouterConsultation(patient){
     let url = btoa(JSON.stringify(patient._links.patient.href));
     this.router.navigateByUrl("/visites/" + url);
@@ -61,6 +57,19 @@ onAjouterLettreToConfer(patient) {
     let url = btoa(JSON.stringify(patient._links.patient.href));
     this.router.navigateByUrl("/hopital/" + url);
   }
+  onAjouterOrdonnance(patient) {
+    let url = btoa(JSON.stringify(patient._links.patient.href));
+    this.router.navigateByUrl("/ordonnances/" + url);
+  }
+  onShowOrdonnance(ordonnance) {
+   let url=ordonnance.id;
+    console.log(btoa(url));
+    this.router.navigateByUrl("/detailOrdonnance/" + btoa(url));
+
+
+
+  }
+
 
 
 }

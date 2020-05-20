@@ -13,6 +13,8 @@ import {VisitesComponent} from "./modules/visites/visites.component";
 import {BilansComponent} from "./modules/bilans/bilans.component";
 import {ConfereComponent} from "./modules/confere/confere.component";
 import {HopitalComponent} from "./modules/hopital/hopital.component";
+import {DetailsOrdonnanceComponent} from "./modules/details-ordonnance/details-ordonnance.component";
+
 
 const routes: Routes = [
   {
@@ -46,7 +48,7 @@ const routes: Routes = [
       component: DossierComponent
     },
     {
-      path:'ordonnances',
+      path:'ordonnances/:url',
       component: OrdonnancesComponent
     },
     {
@@ -61,6 +63,9 @@ const routes: Routes = [
     },{
     path:'hopital/:url',
       component:HopitalComponent
+    },{
+      path:'detailOrdonnance/:url',
+      component:DetailsOrdonnanceComponent
     }]
 
 }];
