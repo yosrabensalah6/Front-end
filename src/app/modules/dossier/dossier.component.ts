@@ -43,7 +43,7 @@ export class DossierComponent implements OnInit {
 
   onAjouterCertif(patient) {
     let url = btoa(JSON.stringify(patient._links.patient.href));
-    this.router.navigateByUrl("/bilans/" + url);
+    this.router.navigateByUrl("/certificatMedical/" + url);
   }
 
 
@@ -61,14 +61,13 @@ onAjouterLettreToConfer(patient) {
     let url = btoa(JSON.stringify(patient._links.patient.href));
     this.router.navigateByUrl("/ordonnances/" + url);
   }
-  onShowOrdonnance(ordonnance) {
+  onDetailsOrdonnance(ordonnance) {
    let url=ordonnance.id;
     console.log(btoa(url));
     this.router.navigateByUrl("/detailOrdonnance/" + btoa(url));
 
-
-
   }
+
 
 
 

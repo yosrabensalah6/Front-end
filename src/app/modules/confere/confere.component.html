@@ -13,15 +13,12 @@
               <label >Details Confère </label>
               <select class="custom-select mr-sm-2" id="inlineFormCustomSelect"  ngModel  name="confer" #confer="ngModel" >
                 <option selected   >Choose...</option>
-                <option *ngFor="let confer of listConfer._embedded.confers" value="{{confer._links.self.href}}" >{{confer.firstname}} {{confer.lastname}} -- {{confer.specialite}}</option>
+                <option *ngFor="let confer of listConfer._embedded.confers" value="{{confer.id}}" >{{confer.firstname}} {{confer.lastname}} -- {{confer.specialite}}</option>
 
 
               </select>
             </div>
-            <div class="form-group">
-              <label>Date Insertion </label>
-              <input type="date" class="form-control" ngModel name="dateInsert"  #dateInsert="ngModel">
-            </div>
+
             <div class="form-group">
               <label>Objet Lettre</label>
               <input type="text" class="form-control" ngModel name="objet" #objet="ngModel"  >

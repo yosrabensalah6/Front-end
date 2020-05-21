@@ -37,7 +37,7 @@ export class OrdonnancesComponent implements OnInit {
       "dosage": formdata.dosage,
       "nbprise": formdata.nbprise,
       "periode": formdata.periode,
-      "medicamentHref": splitted[0],
+      "medicamentId": splitted[0],
       "medicamentNom":splitted[1],
       "medicamentType":splitted[2]
     });
@@ -61,8 +61,8 @@ export class OrdonnancesComponent implements OnInit {
               "dosage": item.dosage,
               "nbprise": item.nbprise,
               // "periode": item.periode,
-              "medicament": item.medicamentHref,
-              "ordonnance": this.currentOrdonnance['_links']['self']['href']
+              "medicament":{ "id":item.medicamentId},
+              "ordonnance": {"id":this.currentOrdonnance.id}
             };
             this.PatientService.saveLigneOrdonnance(this.PatientService.hosts + '/ligneOrdonnances', ligneOrdonnance)
               .subscribe(res => {

@@ -3,7 +3,6 @@ export class Patient {
   public firstname:string;
   public lastname:string;
   public telephone:number;
-  public dateInsert : Date;
   public birthday:Date;
   public sexe : string;
   public numMatCNAM:number;
@@ -11,5 +10,6 @@ export class Patient {
   public validationday:Date;
   public codeAPCI:number;
   public  consultations :any;
+  public dateInsert:Date;
 
 }

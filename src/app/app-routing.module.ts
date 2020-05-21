@@ -10,10 +10,10 @@ import {LoginComponent} from "./login/login.component";
 import {DossierComponent} from "./modules/dossier/dossier.component";
 import {OrdonnancesComponent} from "./modules/ordonnances/ordonnances.component";
 import {VisitesComponent} from "./modules/visites/visites.component";
-import {BilansComponent} from "./modules/bilans/bilans.component";
 import {ConfereComponent} from "./modules/confere/confere.component";
 import {HopitalComponent} from "./modules/hopital/hopital.component";
 import {DetailsOrdonnanceComponent} from "./modules/details-ordonnance/details-ordonnance.component";
+import {CertificatMedicalComponent} from "./modules/certificat-medical/certificat-medical.component";
 
 
 const routes: Routes = [
@@ -55,8 +55,8 @@ const routes: Routes = [
       path:'visites/:url',
       component:VisitesComponent
     },{
-    path:'bilans/:url',
-      component:BilansComponent
+    path:'certificatMedical/:url',
+      component:CertificatMedicalComponent
     },{
     path:'confere/:url',
       component:ConfereComponent

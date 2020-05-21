@@ -20,6 +20,8 @@
                 <table class="table table-striped border">
                   <thead>
                   <tr>
+                    <th>Date creation fiche </th>
+                    <th>Sexe</th>
                     <th>Date Naissance</th>
                     <th>Num Matricule CNAM</th>
                     <th>Type CNAM</th>
@@ -29,6 +31,9 @@
                   </thead>
                   <tbody>
                   <tr>
+
+                    <td>{{currentPatient.dateInsert}}</td>
+                    <td>{{currentPatient.sexe}}</td>
                     <td>{{currentPatient.birthday}}</td>
                     <td>{{currentPatient.numMatCNAM}}</td>
                     <td>{{currentPatient.typeCNAM}}</td>
@@ -60,16 +65,7 @@
                 </div>
                 <hr>
                 <div class="row justify-content-end">
-                  <form>
-                    <div class="row no-gutters">
-                      <div class="col">
-                        <input class="form-control form-control-borderless" type="search" placeholder="Rechercher...">
-                      </div>
-                      <div class="col-auto">
-                        <button class="btn btn-outline-primary" type="submit">Search</button>
-                      </div>
-                    </div>
-                  </form>
+
 
                 <table class="table table-striped border" >
                   <thead>
@@ -79,6 +75,7 @@
                     <th>Temperature</th>
                     <th>poids</th>
                     <th>Tension Arterielle</th>
+
                   </tr>
                   </thead>
                   <tbody>
@@ -88,6 +85,7 @@
                     <td>{{consultation.temperature}} </td>
                     <td>{{consultation.weight}}</td>
                     <td>{{consultation.bloodpressure}}</td>
+
                   </tr>
 
                   </tbody>
@@ -124,7 +122,7 @@
                     <tbody>
                     <tr *ngFor="let ordonnance of  currentPatient.ordonnances">
                       <td>{{ordonnance.dateInsert}}</td>
-                      <button (click)="onShowOrdonnance(ordonnance)" ><mat-icon>visibility</mat-icon></button>
+                      <button class="btn btn-outline-primary btn-sm" (click)="onDetailsOrdonnance(ordonnance)" ><mat-icon>visibility</mat-icon></button>
                     </tr>
 
 
@@ -163,8 +161,8 @@
                   <tbody>
                   <tr *ngFor="let certificate of currentPatient.medicalCertificates">
                     <td>{{certificate.dateInsert}}</td>
-                    <td>{{certificate.datedebut}}</td>
-                    <td>{{certificate.datefin}}</td>
+                    <td>{{certificate.dateDebut}}</td>
+                    <td>{{certificate.dateFin}}</td>
                     <td>{{certificate.description}}</td>
                   </tr>
                   </tbody>
@@ -245,7 +243,8 @@
                       <th>Date Creation </th>
                       <th>Objet Lettre</th>
                       <th>Description</th>
-                      <th>Detail Confere</th>
+                      <th> Nom Confere</th>
+                      <th>Spécialité</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -253,7 +252,8 @@
                       <td>{{confer.dateInsert}}</td>
                       <td>{{confer.objet}}</td>
                       <td>{{confer.description}}</td>
-                      <button class="btn btn-primary btn-sm" (click)="onShowDetails(currentLetter)"><mat-icon>visibility</mat-icon></button>
+                      <td>Dr {{confer.confer.firstname}} {{confer.confer.lastname}}</td>
+                      <td>{{confer.confer.specialite}}</td>
                     </tr>
 
                     </tbody>
@@ -287,12 +287,14 @@
                     <tr>
                       <th>Date Insertion </th>
                       <th>Objet</th>
+                      <th>Nom Hopital</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr *ngFor="let hopital of currentPatient.hospitalisationLettres">
                       <td>{{hopital.dateInsert}}</td>
                       <td>{{hopital.objet}}</td>
+                      <td>{{hopital.polyclinicHospital.name}}</td>
                     </tr>
                     </tbody>
 

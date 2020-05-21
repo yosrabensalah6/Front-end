@@ -30,10 +30,11 @@ export class PatientsComponent implements OnInit {
   }
 
   onSavePatient(formdata: any) {
+    let dateInsert = new Date().toISOString().slice(0, 19).replace('T', ' ');
     console.log('***********************',formdata);
     let data={'firstname':formdata.firstname,'lastname':formdata.lastname,'telephone':formdata.telephone,'birthday':formdata.birthday,
       'sexe':formdata.sexe,'numMatCNAM':formdata.numMatCNAM,'typeCNAM':formdata.typeCNAM,'validationday':formdata.validationday,
-      'codeAPCI':formdata.codeAPCI,'creationday':formdata.creationday};
+      'codeAPCI':formdata.codeAPCI,'dateInsert':dateInsert,};
     console.log(data);
     this.patientService.saveResources(this.patientService.hosts+'/patients',data)
       .subscribe(res=>{

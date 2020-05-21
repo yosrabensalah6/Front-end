@@ -49,14 +49,15 @@
 
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label>Date Création </label>
-                <input type="date" class="form-control" ngModel name="dateInsert" #dateInsert="ngModel">
-              </div>
-              <div class="form-group col-md-6">
                 <label>Date Naissance</label>
                 <input type="date" class="form-control" ngModel name="birthday" #birthday="ngModel">
               </div>
+            <div class="form-group col-md-6">
+              <label>Date Validité CNAM</label>
+              <input type="date" class="form-control" ngModel name="validationday" #validationday="ngModel">
             </div>
+            </div>
+
 
             <div class="form-row">
               <div class="form-group col-md-6">
@@ -71,10 +72,7 @@
             </div>
 
             <div class="form-row">
-              <div class="form-group col-md-6">
-                <label>Date Validité CNAM</label>
-                <input type="date" class="form-control" ngModel name="validationday" #validationday="ngModel">
-              </div>
+
               <div class="form-group col-md-6">
                 <label>Code APCI </label>
                 <input type="text" class="form-control" placeholder="Code APCI" ngModel name="codeAPCI"

@@ -32,12 +32,13 @@ export class ConfereComponent implements OnInit {
 
   onsaveLettre(formdata: any) {
      let url = JSON.parse(atob(this.activatedRoute.snapshot.params["url"]));
+    let dateInsert = new Date().toISOString().slice(0, 19).replace('T', ' ');
     console.log(formdata);
     let data = {
-      "dateInsert": formdata.dateInsert,
+      "dateInsert": dateInsert,
       "objet":formdata.objet,
       "description":formdata.description,
-      "confer":formdata.confer,
+      "confer":{"id":formdata.confer},
       "patient":url};
 
 
@@ -47,6 +48,7 @@ export class ConfereComponent implements OnInit {
           this.currentLettre=res;
           let paramUrl = this.activatedRoute.snapshot.params["url"];
           this.router.navigateByUrl("/dossier/"+paramUrl);
+        console.log(data);
         },err=> {
         console.log(err);
 

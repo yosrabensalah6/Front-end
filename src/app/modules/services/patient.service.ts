@@ -65,6 +65,9 @@ public saveLigneOrdonnance(url,data):Observable<LigneOrdonnance>{
 public getOrdonnance(url){
     return  this.httpClient.get(this.hosts+url);
 }
+  public DeleteResources(url) {
+    return this.httpClient.delete(url);
+  }
 
 
 

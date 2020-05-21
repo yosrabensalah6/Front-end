@@ -31,11 +31,12 @@ export class HopitalComponent implements OnInit {
 
   onsaveLettreHopital(formdata: any) {
     let url = JSON.parse(atob(this.activatedRoute.snapshot.params["url"]));
+    let dateInsert = new Date().toISOString().slice(0, 19).replace('T', ' ');
     console.log(formdata);
     let data = {
-      "dateInsert": formdata.dateInsert,
+      "dateInsert": dateInsert,
       "objet":formdata.objet,
-      "polyclinicHospital":formdata.hopital,
+      "polyclinicHospital":{"id":formdata.hopital},
       "patient":url};
     console.log(data);
     this.HopitalService.saveLettreHopital(this.HopitalService.hosts+"/hospitalisationLettres",data)

@@ -26,8 +26,9 @@ export class VisitesComponent implements OnInit {
     let url = JSON.parse(atob(this.activatedRoute.snapshot.params["url"]));
 
     console.log(url);
+    let dateInsert = new Date().toISOString().slice(0, 19).replace('T', ' ');
     let data = {
-      "dateInsert": formdata.dateInsert,
+      "dateInsert":dateInsert,
       "motif": formdata.motif,
       "temperature": formdata.temperature,
       "bloodpressure": formdata.bloodpressure,

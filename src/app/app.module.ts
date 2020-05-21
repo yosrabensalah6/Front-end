@@ -13,13 +13,13 @@ import {MatIconModule} from "@angular/material/icon";
 import { DossierComponent } from './modules/dossier/dossier.component';
 import { OrdonnancesComponent } from './modules/ordonnances/ordonnances.component';
 import { VisitesComponent } from './modules/visites/visites.component';
-import { BilansComponent } from './modules/bilans/bilans.component';
 import { ConfereComponent } from './modules/confere/confere.component';
 import { HopitalComponent } from './modules/hopital/hopital.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 
 import { DetailsOrdonnanceComponent } from './modules/details-ordonnance/details-ordonnance.component';
+import { CertificatMedicalComponent } from './modules/certificat-medical/certificat-medical.component';
 
 @NgModule({
   declarations: [
@@ -31,10 +31,10 @@ import { DetailsOrdonnanceComponent } from './modules/details-ordonnance/details
     DossierComponent,
     OrdonnancesComponent,
     VisitesComponent,
-    BilansComponent,
     ConfereComponent,
     HopitalComponent,
     DetailsOrdonnanceComponent,
+    CertificatMedicalComponent,
   ],
   imports: [
     BrowserModule,
