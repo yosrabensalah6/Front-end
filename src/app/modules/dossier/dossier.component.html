@@ -1,314 +1,327 @@
-<div class="container">
-  <div class="row">
+<div class="card">
+  <div class="card-header" style="background-color: #d9edf7">
+    <div class="row">
+      <mat-icon style="color: #1a69bc;font-size: 30px">how_to_reg</mat-icon>
+      <span style="color: #1a69bc;font-size: 20px;margin-left: 10px">Dossier n° {{currentPatient.id}}
+        : {{currentPatient.firstname}} {{currentPatient.lastname}}
+      </span>
 
-    <div class="col-12 ">
-      <div class="card">
-        <div class="card-body"  >
-
-
-          <mat-icon style="color: orange;">how_to_reg</mat-icon>
-          <span style="color: #1a69bc" >Dossier n° {{currentPatient.id}} : {{currentPatient.firstname}} {{currentPatient.lastname}}</span>
-          <hr>
-
-
-            <div class="card">
-              <div class="card-body">
-                <mat-icon style="color: orange;">folder_open</mat-icon>
-                <span style="color: #1a69bc">Fiche Patient</span>
-                <hr>
-                <br>
-                <table class="table table-striped border">
-                  <thead>
-                  <tr>
-                    <th>Date creation fiche </th>
-                    <th>Sexe</th>
-                    <th>Date Naissance</th>
-                    <th>Num Matricule CNAM</th>
-                    <th>Type CNAM</th>
-                    <th>Code APCI</th>
-                    <th>Date Validité CNAM</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-
-                    <td>{{currentPatient.dateInsert}}</td>
-                    <td>{{currentPatient.sexe}}</td>
-                    <td>{{currentPatient.birthday}}</td>
-                    <td>{{currentPatient.numMatCNAM}}</td>
-                    <td>{{currentPatient.typeCNAM}}</td>
-                    <td>{{currentPatient.codeAPCI}}</td>
-                    <td>{{currentPatient.validationday}}</td>
-
-                  </tr>
-                  </tbody>
-                </table>
-        </div>
-      </div>
-
-
-          <br>
-          <div class=" col-12">
-
-            <div class="card">
-              <div class="card-body">
-                <mat-icon style="color: orange;">folder_open</mat-icon>
-                <span style="color: #1a69bc">Visites</span>
-                <div class="row justify-content-end">
-                  <form>
-                    <div class="row no-gutters">
-                      <div class="col-auto">
-                        <button class="btn btn-outline-success"  (click)="onAjouterConsultation(currentPatient)"><mat-icon>add</mat-icon>Ajouter</button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-                <hr>
-                <div class="row justify-content-end">
-
-
-                <table class="table table-striped border" >
-                  <thead>
-                  <tr>
-                    <th>Date </th>
-                    <th>Motif</th>
-                    <th>Temperature</th>
-                    <th>poids</th>
-                    <th>Tension Arterielle</th>
-
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr  *ngFor=" let consultation of currentPatient.consultations">
-                    <td>{{consultation.dateInsert}}</td>
-                    <td>{{consultation.motif}}</td>
-                    <td>{{consultation.temperature}} </td>
-                    <td>{{consultation.weight}}</td>
-                    <td>{{consultation.bloodpressure}}</td>
-
-                  </tr>
-
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-            <br>
-            <div class="offset-12 ">
-              <div class="card">
-                <div class="card-body">
-                  <mat-icon style="color: orange;">folder_open</mat-icon>
-                  <span style="color: #1a69bc">Ordonnances</span>
-
-                  <div class="row justify-content-end">
-                    <form>
-                      <div class="row no-gutters">
-                        <div class="col-auto">
-                          <button class="btn btn-outline-success" type="submit" (click)="onAjouterOrdonnance(currentPatient)"><mat-icon>add</mat-icon>Ajouter</button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                  <hr>
-                  <br>
-                  <table class="table table-striped border">
-                    <thead>
-                    <tr>
-                      <th>Date Ordonnace</th>
-                      <th> Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr *ngFor="let ordonnance of  currentPatient.ordonnances">
-                      <td>{{ordonnance.dateInsert}}</td>
-                      <button class="btn btn-outline-primary btn-sm" (click)="onDetailsOrdonnance(ordonnance)" ><mat-icon>visibility</mat-icon></button>
-                    </tr>
-
-
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-
-          <br>
-          <div class="col-12 ">
-            <div class="card">
-              <div class="card-body">
-                <mat-icon style="color: orange;">folder_open</mat-icon>
-                <span style="color: #1a69bc">Cetificats Medical </span>
-                <div class="row justify-content-end">
-                  <form>
-                    <div class="row no-gutters">
-                      <div class="col-auto">
-                        <button class="btn btn-outline-success" type="submit" (click)="onAjouterCertif(currentPatient)"  ><mat-icon>add</mat-icon>Ajouter</button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-                <hr>
-                <br>
-                <table class="table table-striped border">
-                  <thead>
-                  <tr>
-                   <th>Date Creation</th>
-                    <th>Date Debut</th>
-                    <th>Date Fin</th>
-                    <th>Description</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr *ngFor="let certificate of currentPatient.medicalCertificates">
-                    <td>{{certificate.dateInsert}}</td>
-                    <td>{{certificate.dateDebut}}</td>
-                    <td>{{certificate.dateFin}}</td>
-                    <td>{{certificate.description}}</td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-<!--          <br>-->
-<!--          <div class="col-12 ">-->
-<!--            <div class="card">-->
-<!--              <div class="card-body">-->
-<!--                <mat-icon style="color: orange;">folder_open</mat-icon>-->
-<!--                <span style="color: #1a69bc">Documents-Images-Vidéos</span>-->
-<!--                <div class="row justify-content-end">-->
-<!--                  <form>-->
-<!--                    <div class="row no-gutters">-->
-<!--                      <div class="col-auto">-->
-<!--                        <button class="btn btn-outline-success" type="submit" routerLink="/documents"><mat-icon>add</mat-icon>Ajouter</button>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </form>-->
-<!--                </div>-->
-<!--                <hr>-->
-<!--                <br>-->
-<!--                <table class="table table-striped border">-->
-<!--                  <thead>-->
-<!--                  <tr>-->
-<!--                    <th>Date </th>-->
-<!--                    <th>Libéllées</th>-->
-<!--                    <th>Action</th>-->
-<!--                  </tr>-->
-<!--                  </thead>-->
-<!--                  <tbody>-->
-<!--                  <tr>-->
-<!--                    <td>12-04-25 15:15</td>-->
-<!--                    <td>Malade</td>-->
-<!--                    <td>delete </td>-->
-<!--                  </tr>-->
-<!--                  <tr>-->
-<!--                    <td>12-04-25 15:15</td>-->
-<!--                    <td>Malade</td>-->
-<!--                    <td>delete </td>-->
-<!--                  </tr>-->
-<!--                  <tr>-->
-<!--                    <td>12-04-25 15:15</td>-->
-<!--                    <td>Malade</td>-->
-<!--                    <td>delete </td>-->
-<!--                  </tr>-->
-<!--                  </tbody>-->
-<!--                </table>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-
-            <br>
-            <div class="offset-12 ">
-              <div class="card">
-                <div class="card-body">
-                  <mat-icon style="color: orange;">folder_open</mat-icon>
-                  <span style="color: #1a69bc">Affecter au Confère</span>
-
-                  <div class="row justify-content-end">
-                    <form>
-                      <div class="row no-gutters">
-                        <div class="col-auto">
-                          <button class="btn btn-outline-success" type="submit" (click)="onAjouterLettreToConfer(currentPatient)"><mat-icon>add</mat-icon>Ajouter</button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                  <hr>
-                  <br>
-                  <table class="table table-striped border">
-                    <thead>
-                    <tr>
-
-                      <th>Date Creation </th>
-                      <th>Objet Lettre</th>
-                      <th>Description</th>
-                      <th> Nom Confere</th>
-                      <th>Spécialité</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr *ngFor="let confer of currentPatient.letterToConfers ">
-                      <td>{{confer.dateInsert}}</td>
-                      <td>{{confer.objet}}</td>
-                      <td>{{confer.description}}</td>
-                      <td>Dr {{confer.confer.firstname}} {{confer.confer.lastname}}</td>
-                      <td>{{confer.confer.specialite}}</td>
-                    </tr>
-
-                    </tbody>
-
-                  </table>
-                </div>
-              </div>
-            </div>
-
-
-            <br>
-            <div class="offset-12 ">
-              <div class="card">
-                <div class="card-body">
-                  <mat-icon style="color: orange;">folder_open</mat-icon>
-                  <span style="color: #1a69bc">Affecter à l'Hopital/Polyclinique</span>
-
-                  <div class="row justify-content-end">
-                    <form>
-                      <div class="row no-gutters">
-                        <div class="col-auto">
-                          <button class="btn btn-outline-success" type="submit" (click)="onAjouterLettreToHopital(currentPatient)"><mat-icon>add</mat-icon>Ajouter</button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                  <hr>
-                  <br>
-                  <table class="table table-striped border">
-                    <thead>
-                    <tr>
-                      <th>Date Insertion </th>
-                      <th>Objet</th>
-                      <th>Nom Hopital</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr *ngFor="let hopital of currentPatient.hospitalisationLettres">
-                      <td>{{hopital.dateInsert}}</td>
-                      <td>{{hopital.objet}}</td>
-                      <td>{{hopital.polyclinicHospital.name}}</td>
-                    </tr>
-                    </tbody>
-
-                  </table>
-                </div>
-              </div>
-            </div>
-
+    </div>
   </div>
-</div>
+  <div class="card-body">
+    <div class="card">
+      <div class="card-body">
+        <mat-icon style="color: orange;">folder_open</mat-icon>
+        <span class="card-title">Fiche Patient</span>
+        <hr>
+        <br>
+        <table class="table table-striped border">
+          <thead>
+          <tr>
+            <th>Date creation fiche</th>
+            <th>Sexe</th>
+            <th>Date Naissance</th>
+            <th>Num Matricule CNAM</th>
+            <th>Type CNAM</th>
+            <th>Code APCI</th>
+            <th>Date Validité CNAM</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
 
+            <td>{{currentPatient.dateInsert}}</td>
+            <td>{{currentPatient.sexe}}</td>
+            <td>{{currentPatient.birthday}}</td>
+            <td>{{currentPatient.numMatCNAM}}</td>
+            <td>{{currentPatient.typeCNAM}}</td>
+            <td>{{currentPatient.codeAPCI}}</td>
+            <td>{{currentPatient.validationday}}</td>
+
+          </tr>
+          </tbody>
+        </table>
       </div>
     </div>
+    <div class="card">
+      <div class="card-body">
+        <div class="card-head">
+          <div>
+            <mat-icon style="color: orange;">folder_open</mat-icon>
+            <span class="card-title">Visites</span>
+          </div>
+          <div>
+            <button class="btn btn-sm btn-outline-success" type="submit"
+                    (click)="onAjouterConsultation(currentPatient)">
+              <mat-icon>add</mat-icon>
+              Ajouter
+            </button>
+          </div>
+        </div>
+        <hr>
 
+        <div class="row justify-content-end">
+
+          <table class="table table-striped border">
+            <thead>
+            <tr>
+              <th>Date</th>
+              <th>Motif</th>
+              <th>Temperature</th>
+              <th>poids</th>
+              <th>Tension Arterielle</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor=" let consultation of currentPatient.consultations">
+              <td>{{consultation.dateInsert}}</td>
+              <td>{{consultation.motif}}</td>
+              <td>{{consultation.temperature}} </td>
+              <td>{{consultation.weight}}</td>
+              <td>{{consultation.bloodpressure}}</td>
+
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+
+        <div class="card-head">
+          <div>
+            <mat-icon style="color: orange;">folder_open</mat-icon>
+            <span class="card-title">Ordonnances</span>
+          </div>
+          <div>
+            <button class="btn btn-sm btn-outline-success" type="submit" (click)="onAjouterOrdonnance(currentPatient)">
+              <mat-icon>add</mat-icon>
+              Ajouter
+            </button>
+          </div>
+        </div>
+        <hr>
+        <table class="table table-striped border">
+          <thead>
+          <tr>
+            <th>Date Ordonnace</th>
+            <th> Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let ordonnance of  currentPatient.ordonnances">
+            <td>{{ordonnance.dateInsert}}</td>
+            <button class="btn btn-outline-primary btn-sm" (click)="onDetailsOrdonnance(ordonnance)">
+              <mat-icon>visibility</mat-icon>
+            </button>
+          </tr>
+
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <div class="card-head">
+          <div>
+            <mat-icon style="color: orange;">folder_open</mat-icon>
+            <span class="card-title">Certificat médicale</span>
+          </div>
+          <div>
+            <button class="btn btn-sm btn-outline-success" type="submit" (click)="onAjouterCertif(currentPatient)">
+              <mat-icon>add</mat-icon>
+              Ajouter
+            </button>
+          </div>
+        </div>
+        <hr>
+        <table class="table table-striped border">
+          <thead>
+          <tr>
+            <th>Date Creation</th>
+            <th>Date Debut</th>
+            <th>Date Fin</th>
+            <th>Description</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let certificate of currentPatient.medicalCertificates">
+            <td>{{certificate.dateInsert}}</td>
+            <td>{{certificate.dateDebut}}</td>
+            <td>{{certificate.dateFin}}</td>
+            <td>{{certificate.description}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+
+        <div class="card-head">
+          <div>
+            <mat-icon style="color: orange;">folder_open</mat-icon>
+            <span class="card-title">Affecter au Confère</span>
+          </div>
+          <div>
+            <button class="btn btn-sm btn-outline-success" type="submit"
+                    (click)="onAjouterLettreToConfer(currentPatient)">
+              <mat-icon>add</mat-icon>
+              Ajouter
+            </button>
+          </div>
+        </div>
+        <hr>
+        <table class="table table-striped border">
+          <thead>
+          <tr>
+
+            <th>Date Creation</th>
+            <th>Objet Lettre</th>
+            <th>Description</th>
+            <th> Nom Confere</th>
+            <th>Spécialité</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let confer of currentPatient.letterToConfers ">
+            <td>{{confer.dateInsert}}</td>
+            <td>{{confer.objet}}</td>
+            <td>{{confer.description}}</td>
+            <td>Dr {{confer.confer.firstname}} {{confer.confer.lastname}}</td>
+            <td>{{confer.confer.specialite}}</td>
+          </tr>
+
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <div class="card-head">
+          <div>
+            <mat-icon style="color: orange;">folder_open</mat-icon>
+            <span class="card-title">Affecter à l'Hopital/Polyclinique</span>
+          </div>
+          <div>
+            <button class="btn btn-sm btn-outline-success" type="submit"
+                    (click)="onAjouterLettreToHopital(currentPatient)">
+              <mat-icon>add</mat-icon>
+              Ajouter
+            </button>
+          </div>
+        </div>
+        <hr>
+        <table class="table table-striped border">
+          <thead>
+          <tr>
+            <th>Date Insertion</th>
+            <th>Objet</th>
+            <th>Nom Hopital</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let hopital of currentPatient.hospitalisationLettres">
+            <td>{{hopital.dateInsert}}</td>
+            <td>{{hopital.objet}}</td>
+            <td>{{hopital.polyclinicHospital.name}}</td>
+          </tr>
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+    <!--    <div class="card">-->
+    <!--      <div class="card-body">-->
+    <!--        <div class="card-head">-->
+    <!--          <div>-->
+    <!--            <mat-icon style="color: orange;">folder_open</mat-icon>-->
+    <!--            <span class="card-title">Bilans : Bio -Radio-Kiné</span>-->
+    <!--          </div>-->
+    <!--          <div>-->
+    <!--            <button class="btn btn-sm btn-outline-success" type="submit" routerLink="/bilans">-->
+    <!--              <mat-icon>add</mat-icon>-->
+    <!--              Ajouter-->
+    <!--            </button>-->
+    <!--          </div>-->
+    <!--        </div>-->
+    <!--        <hr>-->
+    <!--        <table class="table table-striped border">-->
+    <!--          <thead>-->
+    <!--          <tr>-->
+    <!--            <th>Date</th>-->
+    <!--            <th>Libéllées</th>-->
+    <!--            <th>Action</th>-->
+    <!--          </tr>-->
+    <!--          </thead>-->
+    <!--          <tbody>-->
+    <!--          <tr>-->
+    <!--            <td>12-04-25 15:15</td>-->
+    <!--            <td>Malade</td>-->
+    <!--            <td>delete</td>-->
+    <!--          </tr>-->
+    <!--          <tr>-->
+    <!--            <td>12-04-25 15:15</td>-->
+    <!--            <td>Malade</td>-->
+    <!--            <td>delete</td>-->
+    <!--          </tr>-->
+    <!--          <tr>-->
+    <!--            <td>12-04-25 15:15</td>-->
+    <!--            <td>Malade</td>-->
+    <!--            <td>delete</td>-->
+    <!--          </tr>-->
+    <!--          </tbody>-->
+    <!--        </table>-->
+    <!--      </div>-->
+    <!--    </div>-->
+    <!--    <div class="card">-->
+    <!--      <div class="card-body">-->
+    <!--        <div class="card-head">-->
+    <!--          <div>-->
+    <!--            <mat-icon style="color: orange;">folder_open</mat-icon>-->
+    <!--            <span class="card-title">Documents-Images-Vidéos</span>-->
+    <!--          </div>-->
+    <!--          <div>-->
+    <!--            <button class="btn btn-sm btn-outline-success" type="submit" routerLink="/documents">-->
+    <!--              <mat-icon>add</mat-icon>-->
+    <!--              Ajouter-->
+    <!--            </button>-->
+    <!--          </div>-->
+    <!--        </div>-->
+    <!--        <hr>-->
+    <!--        <table class="table table-striped border">-->
+    <!--          <thead>-->
+    <!--          <tr>-->
+    <!--            <th>Date</th>-->
+    <!--            <th>Libéllées</th>-->
+    <!--            <th>Action</th>-->
+    <!--          </tr>-->
+    <!--          </thead>-->
+    <!--          <tbody>-->
+    <!--          <tr>-->
+    <!--            <td>12-04-25 15:15</td>-->
+    <!--            <td>Malade</td>-->
+    <!--            <td>delete</td>-->
+    <!--          </tr>-->
+    <!--          <tr>-->
+    <!--            <td>12-04-25 15:15</td>-->
+    <!--            <td>Malade</td>-->
+    <!--            <td>delete</td>-->
+    <!--          </tr>-->
+    <!--          <tr>-->
+    <!--            <td>12-04-25 15:15</td>-->
+    <!--            <td>Malade</td>-->
+    <!--            <td>delete</td>-->
+    <!--          </tr>-->
+    <!--          </tbody>-->
+    <!--        </table>-->
+    <!--      </div>-->
+    <!--    </div>-->
   </div>
 </div>
 
