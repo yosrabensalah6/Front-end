@@ -32,13 +32,15 @@
               <div style="margin-bottom: 15px" *ngIf="showFormAddHospital">
                 <form #f1="ngForm" (ngSubmit)="onSaveHopital(f1.value)">
                   <div class="form-group">
-                    <label>Nom</label>
-                    <input type="text" class="form-control" placeholder="Nom" ngModel name="name" #name="ngModel"  >
+                    <label>Nom *</label>
+                    <input type="text" class="form-control" placeholder="Nom" ngModel name="name" #name="ngModel" required >
+                    <div class="alert alert-danger"*ngIf="name.touched && !name.valid" >Nom Hopital is required </div>
                   </div>
 
                   <div class="form-group">
-                    <label>Adresse</label>
+                    <label>Adresse *</label>
                     <textarea rows="3" class="form-control" placeholder="Adresse"  ngModel name="adresse" #adresse="ngModel"></textarea>
+                    <div class="alert alert-danger"*ngIf="adresse.touched && !adresse.valid" >Adresse Hopital is required </div>
                   </div>
 
                   <div class="text-center">

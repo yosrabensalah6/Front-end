@@ -25,36 +25,41 @@
 
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label>Nom </label>
-                <input type="text" class="form-control" placeholder="Nom" ngModel name="firstname" #firstname="ngModel">
+                <label>Nom *</label>
+                <input type="text" class="form-control" placeholder="Nom" ngModel name="firstname" #firstname="ngModel" required>
+                <div class="alert alert-danger"*ngIf="firstname.touched && !firstname.valid" >Nom is required </div>
               </div>
               <div class="form-group col-md-6">
-                <label>Prénom </label>
+                <label>Prénom *</label>
                 <input type="text" class="form-control" placeholder="Prénom" ngModel name="lastname"
-                       #lastname="ngModel">
+                       #lastname="ngModel" required>
+                <div class="alert alert-danger"*ngIf="lastname.touched && !lastname.valid" >Nom is required </div>
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label>Sexe </label>
-                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" ngModel name="sexe" #sexe="ngModel">
+                <label>Sexe *</label>
+                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" ngModel name="sexe" #sexe="ngModel" required="">
                   <option selected>Choose...</option>
                   <option value="M">M</option>
                   <option value="F">F</option>
                 </select>
+                <div class="alert alert-danger"*ngIf="sexe.touched && !sexe.valid" >Sexe is required </div>
               </div>
               <div class="form-group col-md-6">
-                <label>Téléphone </label>
+                <label>Téléphone *</label>
                 <input type="text" class="form-control" placeholder="télephone" ngModel name="telephone"
-                       #telephone="ngModel">
+                       #telephone="ngModel" required>
+                <div class="alert alert-danger"*ngIf="telephone.touched && !telephone.valid" >telephone is required </div>
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label>Date Naissance</label>
-                <input type="date" class="form-control" ngModel name="birthday" #birthday="ngModel">
+                <label>Date Naissance *</label>
+                <input type="date" class="form-control" ngModel name="birthday" #birthday="ngModel" required>
+                <div class="alert alert-danger"*ngIf="birthday.touched && !birthday.valid" >Date Naissance is required </div>
               </div>
               <div class="form-group col-md-6">
                 <label>Date Validité CNAM</label>
