@@ -34,7 +34,7 @@
 
             </div>
             <div class="form-group">
-              <label>time  </label>
+              <label>Heure  </label>
 
               <input  type="time"  #date="ngModel" class="form-control" name="time" ngModel  >
 
@@ -45,20 +45,7 @@
           </form>
 
         </div>
-    <div class="panel panel-body" *ngIf="mode==2" >
-          <p></p>-->
 
-         <div class="form-group" >-->
-            <label>Id : </label> <label>{{currentRDV.id}}</label>
-          <p></p>-->
-         <label>Nom: </label><label>{{currentRDV.firstname}}</label>
-            <p></p>-->
-            <label>Prenom: </label><label>{{currentRDV.lastname}}</label>
-          <p></p>-->
-           <label>Date : </label><label>{{currentRDV.date}}</label>
-
-       </div>
-       </div>
       </div>
     </div>
 
@@ -95,7 +82,7 @@
             <th>Nom</th>
             <th>Prénom</th>
             <th>Date</th>
-            <th>Action</th>
+            <th>Actions</th>
           </tr>
           </thead>
           <tbody>
@@ -103,12 +90,27 @@
             <td>{{appointment.firstname}}</td>
             <td>{{appointment.lastname}}</td>
             <td>{{appointment.date}}</td>
-            <button   class=" btn btn-outline-danger" (click)="onDeleteAppoint(appointment)" > <mat-icon>delete_outline</mat-icon></button>
+            <td>
+              <a class="text-success">
+                <mat-icon>edit</mat-icon>
+              </a>
+              <a class="text-danger" (click)="onDeleteAppointment(appointment)">
+                <mat-icon>delete</mat-icon>
+              </a>
+            </td>
 
           </tr>
 
           </tbody>
         </table>
+        <nav aria-label="Page navigation example">
+          <ul *ngIf="pageAppointments" class="pagination  pagination-sm">
+            <li class="page-item clickable" [ngClass]="i==currentpageAppointment?'active':''"
+                *ngFor="let p of pageAppointments;let i=index">
+              <a class="page-link" (click)="onPageAppointment(i)">{{i}}</a>
+            </li>
+          </ul>
+        </nav>
 
       </div>
     </div>

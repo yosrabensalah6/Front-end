@@ -12,27 +12,39 @@ export class AppointmentComponent implements OnInit {
 
 
 
+  private currentAppointment: AppointmentModel;
+  private totalpages: number;
+  private size: number=4;
 
-  private currentRDV: AppointmentModel;
-  private mode: number=1;
+
+  private pageAppointments: Array<number>;
+  private currentpageAppointment: number=0;
   private listAppointments;
+
 
 
   constructor(private RDVService:RDVService, private router:Router) { }
 
   ngOnInit() {
-    this.getAppointmentsCurrentDay();
+    this.OngetAppointments();
   }
 
-  getAppointmentsCurrentDay() {
-    this.RDVService.getRessouces('/appointments')
+  OngetAppointments() {
+    this.RDVService.getAppointment(this.currentpageAppointment,this.size)
       .subscribe(data => {
-        this.listAppointments = data;
-
+        this.totalpages = data['page'].totalPages;
+        this.pageAppointments= new Array<number>(this.totalpages);
+        this.listAppointments = data
       }, err => {
         console.log(err);
       });
   }
+
+  onPageAppointment(i) {
+    this.currentpageAppointment = i;
+    this.OngetAppointments();
+  }
+
   onChercher(formdata:any){
     console.log(formdata);
     this.RDVService.getRessouces('/appointments/search/byDate?date='+formdata.date)
@@ -47,12 +59,16 @@ export class AppointmentComponent implements OnInit {
 
   onSaveRDV(formdata: any) {
    console.log('***********************',formdata);
-   let data={'firstname':formdata.firstname,'lastname':formdata.lastname,'date':formdata.date+" "+formdata.time};
+   let data={
+       'firstname':formdata.firstname,
+       'lastname':formdata.lastname,
+       'date':formdata.date+
+       " "+formdata.time};
     console.log(data);
    this.RDVService.saveResources(this.RDVService.host+'/appointments',data)
      .subscribe(res=>{
-       this.currentRDV=res;
-       this.mode=2;
+       this.currentAppointment=res;
+       this.OngetAppointments();
        },err=>{
        console.log(err);
        }
@@ -61,12 +77,13 @@ export class AppointmentComponent implements OnInit {
 
   }
 
-  onDeleteAppoint(appointment) {
+  onDeleteAppointment(appointment) {
     let conf = confirm("etes vous sure ?");
     if (conf) {
       this.RDVService.DeleteResources(appointment._links.self.href)
         .subscribe(data => {
-          this.onChercher(data);
+
+          this.OngetAppointments();
         }, err => {
           console.log(err);
         })

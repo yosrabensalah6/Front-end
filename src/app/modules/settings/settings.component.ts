@@ -85,7 +85,7 @@ export class SettingsComponent implements OnInit {
     this.settingsService.getMedicaments(this.currentPageMedicament, this.size)
       .subscribe(data => {
         this.totalpages = data['page'].totalPages;
-        this.pageMedicaments = new Array<number>(this.totalpages)
+        this.pageMedicaments = new Array<number>(this.totalpages);
         this.listMedicaments = data;
       }, err => {
         console.log(err);

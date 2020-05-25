@@ -19,5 +19,8 @@ public getRessouces(url){
   public DeleteResources(url) {
     return this.httpClient.delete(url);
   }
+  public getAppointment(page : number,size:number){
+    return this.httpClient.get(this.host+'/appointments/search/byDateInsertPage?page='+page+'&size='+size)
+  }
 
 }
