@@ -35,6 +35,9 @@ export class PatientsComponent implements OnInit {
   showForm() {
     this.showFormAddPatient = true;
   }
+  hideForm() {
+    this.showFormAddPatient = false;
+  }
 
   onSavePatient(formdata: any) {
     let dateInsert = new Date().toISOString().slice(0, 19).replace('T', ' ');
