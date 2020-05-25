@@ -19,10 +19,11 @@
               <div class="card-head">
                 <div>
                   <mat-icon style="color: orange;">format_list_bulleted</mat-icon>
-                  <span style="color: #1a69bc">Liste des cliniques / hôpitaux</span>
+                  <span class="card-title">Liste des cliniques / hôpitaux</span>
                 </div>
                 <div>
-                  <button class="btn btn-sm btn-success" (click)="showForm('Hospital')">Ajouter</button>
+                  <button class="btn btn-sm btn-primary" (click)="showForm('Hospital')">
+                    <mat-icon>add</mat-icon>Ajouter</button>
                 </div>
               </div>
 
@@ -31,13 +32,13 @@
               <div style="margin-bottom: 15px" *ngIf="showFormAddHospital">
                 <form #f1="ngForm" (ngSubmit)="onSaveHopital(f1.value)">
                   <div class="form-group">
-                    <label>Nom Hopital </label>
-                    <input type="text" class="form-control" placeholder="Nom Hopital" ngModel name="name" #name="ngModel"  >
+                    <label>Nom</label>
+                    <input type="text" class="form-control" placeholder="Nom" ngModel name="name" #name="ngModel"  >
                   </div>
 
                   <div class="form-group">
                     <label>Adresse</label>
-                    <input type="text" class="form-control" placeholder="Adresse" ngModel name="adresse" #adresse="ngModel" >
+                    <textarea rows="3" class="form-control" placeholder="Adresse"  ngModel name="adresse" #adresse="ngModel"></textarea>
                   </div>
 
                   <div class="text-center">
@@ -46,7 +47,7 @@
                   </div>
                 </form>
               </div>
-              <table class="table table-striped border">
+              <table class="table table-striped table-bordered">
                 <thead>
                 <tr>
                   <th>Nom</th>
@@ -78,10 +79,11 @@
               <div class="card-head">
                 <div>
                   <mat-icon style="color: orange;">format_list_bulleted</mat-icon>
-                  <span style="color: #1a69bc">Listes des Médicament</span>
+                  <span class="card-title">Liste des Médicaments</span>
                 </div>
                 <div>
-                  <button class="btn btn-sm btn-success" (click)="showForm('Medicament')">Ajouter</button>
+                  <button class="btn btn-sm btn-primary" (click)="showForm('Medicament')">
+                    <mat-icon>add</mat-icon>Ajouter</button>
                 </div>
               </div>
               <hr>
@@ -98,7 +100,7 @@
 
                   <div class="form-group">
                     <label>Description</label>
-                    <textarea rows="5" class="form-control" placeholder="Description"  ngModel name="description" #description="ngModel"></textarea>
+                    <textarea rows="3" class="form-control" placeholder="Description"  ngModel name="description" #description="ngModel"></textarea>
                   </div>
                   <div class="text-center">
                     <button type="submit" class="btn btn-sm btn-primary" style="margin-right: 5px" >Enregistrer</button>
@@ -106,7 +108,7 @@
                   </div>
                 </form>
               </div>
-              <table class="table table-striped border">
+              <table class="table table-striped table-bordered">
                 <thead>
                 <tr>
                   <th>Nom</th>
@@ -144,10 +146,11 @@
               <div class="card-head">
                 <div>
                   <mat-icon style="color: orange;">format_list_bulleted</mat-icon>
-                  <span style="color: #1a69bc">Listes des Confères</span>
+                  <span class="card-title">Liste des Confères</span>
                 </div>
                 <div>
-                  <button class="btn btn-sm btn-success" (click)="showForm('Confer')">Ajouter</button>
+                  <button class="btn btn-sm btn-primary" (click)="showForm('Confer')">
+                    <mat-icon>add</mat-icon>Ajouter</button>
                 </div>
               </div>
 
@@ -176,7 +179,7 @@
                     </div>
                   </div>
                   <div class="form-row">
-                    <div class="form-group col-6">
+                    <div class="form-group col-12">
                       <label>Adresse</label>
                       <textarea rows="3" class="form-control" placeholder="Adresse"  ngModel name="adresse" #adresse="ngModel"></textarea>
                     </div>
@@ -190,7 +193,7 @@
                 </form>
               </div>
 
-              <table class="table table-striped border">
+              <table class="table table-striped table-bordered">
                 <thead>
                 <tr>
                   <th>Nom</th>

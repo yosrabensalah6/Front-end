@@ -53,6 +53,7 @@ export class SettingsComponent implements OnInit {
       this.showFormAddConfer = true;
     }
   }
+
   hideForm(value: any) {
     if (value === 'Hospital') {
       this.showFormAddHospital = false;
@@ -112,57 +113,65 @@ export class SettingsComponent implements OnInit {
     this.onGetConfers();
   }
 
-onSaveConfer(formdata){
-  let dateInsert = new Date().toISOString().slice(0, 19).replace('T', ' ');
-    let data={
-      "firstname":formdata.firstname,
-    "lastname":formdata.lastname,
-    "telephone":formdata.telephone,
-    "adresse":formdata.adresse,
-    "dateInsert":dateInsert,
-    "specialite":formdata.specialite};
+  onSaveConfer(formdata) {
+    let dateInsert = new Date().toISOString().slice(0, 19).replace('T', ' ');
+    let data = {
+      "firstname": formdata.firstname,
+      "lastname": formdata.lastname,
+      "telephone": formdata.telephone,
+      "adresse": formdata.adresse,
+      "dateInsert": dateInsert,
+      "specialite": formdata.specialite
+    };
     console.log(data);
-    this.settingsService.saveConfer(this.settingsService.host+"/confers",data)
-      .subscribe(res=>{
-        this.currentConfer=res;
-        console.log(res);
-  },err=>{console.log(err)}
-
+    this.settingsService.saveConfer(this.settingsService.host + "/confers", data)
+      .subscribe(res => {
+          this.currentConfer = res;
+          this.showFormAddConfer = false;
+          this.onGetConfers();
+        }, err => {
+          console.log(err)
+        }
       )
 
-}
+  }
 
   onSaveHopital(formdata: any) {
     let dateInsert = new Date().toISOString().slice(0, 19).replace('T', ' ');
-    let data={
-      "name":formdata.name,
-      "adresse":formdata.adresse,
-      "dateInsert":dateInsert,
+    let data = {
+      "name": formdata.name,
+      "adresse": formdata.adresse,
+      "dateInsert": dateInsert,
     };
     console.log(data);
-    this.settingsService.saveHopital(this.settingsService.host+"/polyclinicHospitals",data)
+    this.settingsService.saveHopital(this.settingsService.host + "/polyclinicHospitals", data)
       .subscribe(
-        res=>{
-          this.currentHopital=res;
-          console.log(res);
-        },err=>{console.log(err);}
-      )}
+        res => {
+          this.currentHopital = res;
+          this.showFormAddHospital = false;
+          this.onGetPolyclinicHospitals();
+        }, err => {
+          console.log(err);
+        }
+      )
+  }
 
 
   onSaveMedicment(formdata) {
     let dateInsert = new Date().toISOString().slice(0, 19).replace('T', ' ');
     let data = {
-    "nom":formdata.nom,
-      "type":formdata.type,
-      "description":formdata.description,
-      "dateInsert":dateInsert,
+      "nom": formdata.nom,
+      "type": formdata.type,
+      "description": formdata.description,
+      "dateInsert": dateInsert,
     };
-    console.log(data);
-    this.settingsService.saveMedicament(this.settingsService.host+"/medicaments",data)
-      .subscribe(res=>{
-        this.currentMedicament=res;
-
-        console.log(res);
-      },err=>{console.log(err);})
+    this.settingsService.saveMedicament(this.settingsService.host + "/medicaments", data)
+      .subscribe(res => {
+        this.currentMedicament = res;
+        this.showFormAddMedicament = false;
+        this.onGetMedicaments();
+      }, err => {
+        console.log(err);
+      })
   }
 }
