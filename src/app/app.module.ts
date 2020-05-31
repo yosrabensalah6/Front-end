@@ -20,6 +20,7 @@ import {HttpClientModule} from "@angular/common/http";
 
 import { DetailsOrdonnanceComponent } from './modules/details-ordonnance/details-ordonnance.component';
 import { CertificatMedicalComponent } from './modules/certificat-medical/certificat-medical.component';
+import { NewAccountComponent } from './new-account/new-account.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { CertificatMedicalComponent } from './modules/certificat-medical/certifi
     HopitalComponent,
     DetailsOrdonnanceComponent,
     CertificatMedicalComponent,
+    NewAccountComponent,
   ],
   imports: [
     BrowserModule,

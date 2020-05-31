@@ -14,9 +14,14 @@ import {ConfereComponent} from "./modules/confere/confere.component";
 import {HopitalComponent} from "./modules/hopital/hopital.component";
 import {DetailsOrdonnanceComponent} from "./modules/details-ordonnance/details-ordonnance.component";
 import {CertificatMedicalComponent} from "./modules/certificat-medical/certificat-medical.component";
+import {NewAccountComponent} from "./new-account/new-account.component";
 
 
 const routes: Routes = [
+  {
+    path: 'new-account',
+    component: NewAccountComponent
+  },
   {
     path:'',
     component: LoginComponent

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {PatientService} from "../services/patient.service";
+import {PatientService} from "../../services/patient.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {LettreConfer} from "../modeles/LettreConfer.medel";
+import {LettreConfer} from "../../modeles/LettreConfer.medel";
 
 @Component({
   selector: 'app-confere',

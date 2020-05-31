@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {PatientService} from "../services/patient.service";
+import {PatientService} from "../../services/patient.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Certif} from "../modeles/Certif.model";
+import {Certif} from "../../modeles/Certif.model";
 
 @Component({
   selector: 'app-certificat-medical',

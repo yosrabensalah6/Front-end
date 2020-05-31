@@ -6,7 +6,7 @@ import {Visite} from "../modeles/Visite.model";
 import {Certif} from "../modeles/Certif.model";
 import {LettreConfer} from "../modeles/LettreConfer.medel";
 import {LettreHopital} from "../modeles/LettreHopital.model";
-import {OrdonnancesComponent} from "../ordonnances/ordonnances.component";
+import {OrdonnancesComponent} from "../modules/ordonnances/ordonnances.component";
 import {Ordonnance} from "../modeles/Ordonnance.model";
 import {LigneOrdonnance} from "../modeles/LigneOrdonnance.model";
 import {Medicament} from "../modeles/Medicament.model";

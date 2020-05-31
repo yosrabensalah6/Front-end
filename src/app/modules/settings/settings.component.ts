@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {SettingsService} from '../services/settings.service';
+import {SettingsService} from '../../services/settings.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Confer} from "../modeles/Confer.model";
-import {Hopital} from "../modeles/Hopital.model";
-import {Medicament} from "../modeles/Medicament.model";
+import {Confer} from "../../modeles/Confer.model";
+import {Hopital} from "../../modeles/Hopital.model";
+import {Medicament} from "../../modeles/Medicament.model";
 
 @Component({
   selector: 'app-settings',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {RDVService} from "../services/RDV.service";
+import {RDVService} from "../../services/RDV.service";
 import {Router} from "@angular/router";
-import {AppointmentModel} from "../modeles/Appointment.model";
+import {AppointmentModel} from "../../modeles/Appointment.model";
 
 @Component({
   selector: 'app-appointment',
