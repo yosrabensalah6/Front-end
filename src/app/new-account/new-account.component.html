@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-lg-12">
+      <!-- breadcrumb-->
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+          <li class="breadcrumb-item"><a href="#">Créer compte utilisateur</a></li>
+        </ol>
+      </nav>
+    </div>
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+
+          <div class="card-head">
+            <div>
+              <mat-icon style="color: orange;">add</mat-icon>
+              <span style="color: #1a69bc ; margin-left:10px">Ajouter utilisateur</span>
+            </div>
+          </div>
+          <hr>
+
+          <form #f="ngForm" (ngSubmit)="onSaveUser(f.value)">
+
+            <div class="form-group">
+              <label>Nom d'utilisateur</label>
+              <input type="text" class="form-control" placeholder="Nom d'utilisateur" ngModel name="username" #username="ngModel" required>
+            </div>
+            <div class="form-group">
+              <label>E-mail</label>
+              <input type="text" class="form-control" placeholder="E-mail" ngModel name="email" #email="ngModel" required>
+            </div>
+            <div class="form-group">
+              <label>Mot de passe</label>
+              <input type="password" class="form-control" placeholder="Mot de passe" ngModel name="password" #password="ngModel" required>
+            </div>
+            <div class="form-group">
+              <label>Confirmez le mot de passe</label>login
+              <input type="password" class="form-control" placeholder="Confirmez le mot de passe" ngModel name="confirmedPassword" #confirmedPassword="ngModel" required>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-sm btn-primary">Creér compte</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
