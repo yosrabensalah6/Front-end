@@ -5,12 +5,12 @@
         <div class="card-body">
 
           <mat-icon style="color: orange;">schedule</mat-icon>
-          <span style="color: #1a69bc">Affecter au Confère </span>
+          <span style="color: #1a69bc">Affecter au Spécialiste</span>
           <hr>
 
           <form #f="ngForm" (ngSubmit)="onsaveLettre(f.value)">
             <div class="form-group" >
-              <label >Details Confère </label>
+              <label >Details Médecin </label>
               <select class="custom-select mr-sm-2" id="inlineFormCustomSelect"  ngModel  name="confer" #confer="ngModel" >
                 <option selected   >Choose...</option>
                 <option *ngFor="let confer of listConfer._embedded.confers" value="{{confer.id}}" >{{confer.firstname}} {{confer.lastname}} -- {{confer.specialite}}</option>
